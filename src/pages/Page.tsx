@@ -10,6 +10,7 @@ const Page: React.FC = () => {
             src="../public/favicon.png"
             alt="AcademicHub, sua comunidade universitária :)"
           ></IonImg>
+          <IonTitle>Academic<span className='title-hub'>Hub</span></IonTitle>
         </IonHeader>
       </IonContent>
     </IonPage>

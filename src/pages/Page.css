@@ -1,32 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 
+.no-scroll {
+    --overflow: hidden;
+    /* Remove o scroll */
+}
+
 ion-content {
     --background: #043A68;
 }
 
-ion-img {
-    width: 128px;
-    height: 128px;
-}
-
-ion-header {
+.login-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 60vh; 
+    height: 100vh;
 }
 
 ion-title {
-    font-family: Syne;
+    font-family: 'Syne', sans-serif;
     letter-spacing: 0.224px;
     font-weight: bold;
     font-size: 40px;
-    text-align: center; 
-    margin-top: 120px;
-    padding: 0; 
+    text-align: center;
 }
 
 .title-hub {
     color: #212427;
+}
+
+
+ion-img {
+    margin: auto;
+    width: 128px;
+    height: 128px;
+}
+
+.input-item {
+    width: 90%;
+    margin: 10px;
+    border-radius: 50px;
+    --background: #f9f9f9;
+}
+
+ion-icon {
+    color: #212427;
+    width: 25px;
+    height: 25px;
+}
+
+ion-input {
+    color: #5f5f5f !important;
+    text-align: center;
+    left: -1.9vh;
+    transform: none !important;
 }

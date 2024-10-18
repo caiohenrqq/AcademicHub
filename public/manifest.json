@@ -1,6 +1,6 @@
 {
-  "short_name": "Ionic App",
-  "name": "My Ionic App",
+  "short_name": "AcademicHub",
+  "name": "AcademicHub | App para Universitários",
   "icons": [
     {
       "src": "assets/icon/favicon.png",

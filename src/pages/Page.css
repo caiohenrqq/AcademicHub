@@ -1,19 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
 
-.no-scroll {
-    --overflow: hidden;
-    /* Remove o scroll */
+:root {
+    --cor-background: #043A68;
+    --cor-branco: #f9f9f9;
+    --cor-cinza-escuro: #212427;
+    --cor-cinza-claro: #5f5f5f;
 }
 
 ion-content {
-    --background: #043A68;
+    --background: var(--cor-background);
 }
 
-.login-container {
+.login-section {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
+}
+
+.login-inputs {
+    width: 100%;
+    padding: 20px;
 }
 
 ion-title {
@@ -24,10 +32,9 @@ ion-title {
     text-align: center;
 }
 
-.title-hub {
-    color: #212427;
+.hub-letras {
+    color: var(--cor-cinza-escuro);
 }
-
 
 ion-img {
     margin: auto;
@@ -35,22 +42,25 @@ ion-img {
     height: 128px;
 }
 
-.input-item {
-    width: 90%;
-    margin: 10px;
-    border-radius: 50px;
-    --background: #f9f9f9;
+ion-item {
+    border-radius:50px;
+    margin-bottom: 1rem;
+    --background: var(--cor-branco) !important;
+    --border-color: transparent;
 }
 
 ion-icon {
-    color: #212427;
+    color: var(--cor-cinza-escuro);
     width: 25px;
     height: 25px;
+    
 }
 
 ion-input {
-    color: #5f5f5f !important;
+    color: var(--cor-cinza-claro) !important;
     text-align: center;
     left: -1.9vh;
     transform: none !important;
+    --highlight-color-focused: transparent;
 }
+

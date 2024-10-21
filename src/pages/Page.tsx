@@ -7,28 +7,29 @@ const Page: React.FC = () => {
   return (
 
     <IonPage>
-      <IonContent className="no-scroll" fullscreen>
-        <div className="login-container">
-          <IonContent>
+      <IonContent fullscreen>
+          <IonContent className='login-section'>
             <IonImg
               src="/favicon.png"
               alt="AcademicHub, sua comunidade universitária :)"
             ></IonImg>
-            <IonTitle>
-              Academic<span className="title-hub">Hub</span>
-            </IonTitle>
 
-            <IonItem className="input-item">
-              <IonIcon slot="start" icon={usericon} aria-hidden="true" />
-              <IonInput placeholder="Escreva seu e-mail"></IonInput>
-            </IonItem>
+              <IonTitle>
+                Academic<span className="hub-letras">Hub</span>
+              </IonTitle>
 
-            <IonItem className="input-item">
-              <IonIcon slot="start" icon={passwordicon} aria-hidden="true" />
-              <IonInput placeholder="Escreva sua senha" type="password"></IonInput>
-            </IonItem>
+              <div className='login-inputs'>
+                <IonItem>
+                  <IonIcon slot="start" icon={usericon} aria-hidden="true" />
+                  <IonInput placeholder="Escreva seu e-mail"></IonInput>
+                </IonItem>
+
+                <IonItem>
+                  <IonIcon slot="start" icon={passwordicon} aria-hidden="true" />
+                  <IonInput placeholder="Escreva sua senha" type="password"></IonInput>
+                </IonItem>
+            </div>
           </IonContent>
-        </div>
       </IonContent>
     </IonPage>
   );

@@ -12,7 +12,8 @@ ion-content {
 }
 
 .login-section {
-  margin-top: 30vh;
+  margin-top: 10vh;
+  gap: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,8 +39,8 @@ ion-title {
 
 ion-img {
   margin: auto;
-  width: 128px;
-  height: 128px;
+  width: 150px;
+  height: 150px;
 }
 
 ion-item {
@@ -68,4 +69,23 @@ ion-input {
     justify-content: center;
     text-decoration: none;
     color: var(--cor-branco);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    letter-spacing: 0.208px;
+}
+
+ion-button {
+    --background: var(--cor-cinza-escuro);
+    color: var(--cor-branco);
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+    text-transform: capitalize;
+    letter-spacing: 0.208px;
+    margin: 1rem auto 1rem auto;
+}
+
+ion-button ion-icon {
+    color: var(--cor-branco);
+    margin-right: 1rem;
 }

@@ -45,7 +45,15 @@ const Page: React.FC = () => {
             </IonItem>
 
             <a className="esqueceu-senha" href="#">Esqueceu sua senha?</a>
-
+            
+            <IonButton shape="round">
+              Entrar
+              <IonIcon slot="icon-only" icon={usericon}></IonIcon>
+            </IonButton>
+            <IonButton shape="round">
+              Cadastrar
+              <IonIcon slot="icon-only" icon={usericon}></IonIcon>
+            </IonButton>
           </div>
         </section>
       </IonContent>

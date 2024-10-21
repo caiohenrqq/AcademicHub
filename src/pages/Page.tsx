@@ -8,28 +8,28 @@ const Page: React.FC = () => {
 
     <IonPage>
       <IonContent fullscreen>
-          <IonContent className='login-section'>
-            <IonImg
-              src="/favicon.png"
-              alt="AcademicHub, sua comunidade universitária :)"
-            ></IonImg>
+        <section className="login-section">
+          <IonImg
+            src="/favicon.png"
+            alt="AcademicHub, sua comunidade universitária :)"
+          />
 
-              <IonTitle>
-                Academic<span className="hub-letras">Hub</span>
-              </IonTitle>
+          <IonTitle>
+            Academic<span className="hub-letras">Hub</span>
+          </IonTitle>
 
-              <div className='login-inputs'>
-                <IonItem>
-                  <IonIcon slot="start" icon={usericon} aria-hidden="true" />
-                  <IonInput placeholder="Escreva seu e-mail"></IonInput>
-                </IonItem>
+          <div className='login-inputs'>
+            <IonItem >
+              <IonIcon slot="start" icon={usericon} aria-hidden="true" />
+              <IonInput placeholder="Escreva seu e-mail"></IonInput>
+            </IonItem>
 
-                <IonItem>
-                  <IonIcon slot="start" icon={passwordicon} aria-hidden="true" />
-                  <IonInput placeholder="Escreva sua senha" type="password"></IonInput>
-                </IonItem>
-            </div>
-          </IonContent>
+            <IonItem>
+              <IonIcon slot="start" icon={passwordicon} aria-hidden="true" />
+              <IonInput placeholder="Escreva sua senha" type="password"></IonInput>
+            </IonItem>
+          </div>
+        </section>
       </IonContent>
     </IonPage>
   );

@@ -12,11 +12,11 @@ ion-content {
 }
 
 .login-section {
+    margin-top: 30vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    height: 100vh;
 }
 
 .login-inputs {
@@ -43,7 +43,7 @@ ion-img {
 }
 
 ion-item {
-    border-radius:50px;
+    border-radius: 50px;
     margin-bottom: 1rem;
     --background: var(--cor-branco) !important;
     --border-color: transparent;
@@ -53,7 +53,7 @@ ion-icon {
     color: var(--cor-cinza-escuro);
     width: 25px;
     height: 25px;
-    
+
 }
 
 ion-input {
@@ -63,4 +63,3 @@ ion-input {
     transform: none !important;
     --highlight-color-focused: transparent;
 }
-

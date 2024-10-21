@@ -1,65 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap");
 
 :root {
-    --cor-background: #043A68;
-    --cor-branco: #f9f9f9;
-    --cor-cinza-escuro: #212427;
-    --cor-cinza-claro: #5f5f5f;
+  --cor-background: #043a68;
+  --cor-branco: #f9f9f9;
+  --cor-cinza-escuro: #212427;
+  --cor-cinza-claro: #5f5f5f;
 }
 
 ion-content {
-    --background: var(--cor-background);
+  --background: var(--cor-background);
 }
 
 .login-section {
-    margin-top: 30vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  margin-top: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-inputs {
-    width: 100%;
-    padding: 20px;
+  width: 100%;
+  padding: 20px;
 }
 
 ion-title {
-    font-family: 'Syne', sans-serif;
-    letter-spacing: 0.224px;
-    font-weight: bold;
-    font-size: 40px;
-    text-align: center;
+  font-family: "Syne", sans-serif;
+  letter-spacing: 0.224px;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
 }
 
 .hub-letras {
-    color: var(--cor-cinza-escuro);
+  color: var(--cor-cinza-escuro);
 }
 
 ion-img {
-    margin: auto;
-    width: 128px;
-    height: 128px;
+  margin: auto;
+  width: 128px;
+  height: 128px;
 }
 
 ion-item {
-    border-radius: 50px;
-    margin-bottom: 1rem;
-    --background: var(--cor-branco) !important;
-    --border-color: transparent;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  --background: var(--cor-branco) !important;
+  --border-color: transparent;
 }
 
 ion-icon {
-    color: var(--cor-cinza-escuro);
-    width: 25px;
-    height: 25px;
-
+  color: var(--cor-cinza-escuro);
+  width: 25px;
+  height: 25px;
 }
 
 ion-input {
-    color: var(--cor-cinza-claro) !important;
-    text-align: center;
-    left: -1.9vh;
-    transform: none !important;
-    --highlight-color-focused: transparent;
+  color: var(--cor-cinza-claro) !important;
+  text-align: center;
+  left: -1.9vh;
+  transform: none !important;
+  --highlight-color-focused: transparent;
+}
+
+.esqueceu-senha {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--cor-branco);
 }

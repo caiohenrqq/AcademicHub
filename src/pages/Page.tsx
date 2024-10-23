@@ -2,15 +2,11 @@ import {
   IonButton,
   IonIcon,
   IonInput,
-  IonTextarea,
   IonItem,
   IonImg,
   IonContent,
-  IonHeader,
-  IonMenuButton,
   IonPage,
   IonTitle,
-  IonToolbar,
 } from "@ionic/react";
 import usericon from "/usericon.svg";
 import passwordicon from "/passwordicon.svg";

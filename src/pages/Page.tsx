@@ -14,6 +14,8 @@ import {
 } from "@ionic/react";
 import usericon from "/usericon.svg";
 import passwordicon from "/passwordicon.svg";
+import loginicon from "/login.svg";
+import cadastraricon from "/cadastrar.svg"
 import "./Page.css";
 
 const Page: React.FC = () => {
@@ -48,11 +50,11 @@ const Page: React.FC = () => {
             
             <IonButton shape="round">
               Entrar
-              <IonIcon slot="icon-only" icon={usericon}></IonIcon>
+              <IonIcon slot="icon-only" icon={loginicon}></IonIcon>
             </IonButton>
             <IonButton shape="round">
               Cadastrar
-              <IonIcon slot="icon-only" icon={usericon}></IonIcon>
+              <IonIcon slot="icon-only" icon={cadastraricon}></IonIcon>
             </IonButton>
           </div>
         </section>

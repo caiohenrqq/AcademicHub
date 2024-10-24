@@ -24,9 +24,9 @@ const Page: React.FC = () => {
             alt="AcademicHub, sua comunidade universitária :)"
           />
 
-          <IonTitle>
+          <div className="title">
             Academic<span className="hub-letras">Hub</span>
-          </IonTitle>
+          </div>
 
           <div className="login-inputs">
             <IonItem>
@@ -41,9 +41,9 @@ const Page: React.FC = () => {
                 type="password"
               ></IonInput>
             </IonItem>
-
-            <a className="esqueceu-senha" href="#">Esqueceu sua senha?</a>
             
+            <a className="esqueceu-senha" href="#">Esqueceu sua senha?</a>
+
             <IonButton shape="round">
               Entrar
               <IonIcon slot="icon-only" icon={loginicon}></IonIcon>

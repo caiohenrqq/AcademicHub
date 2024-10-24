@@ -25,7 +25,7 @@ ion-content {
   padding: 20px;
 }
 
-ion-title {
+.title {
   font-family: "Syne", sans-serif;
   letter-spacing: 0.224px;
   font-weight: bold;

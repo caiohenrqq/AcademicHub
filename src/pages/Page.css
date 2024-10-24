@@ -80,6 +80,7 @@ ion-button {
     display: flex;
     flex-direction: column;
     max-width: 50%;
+    height: 3rem;
     text-transform: capitalize;
     letter-spacing: 0.208px;
     margin: 1rem auto 1rem auto;

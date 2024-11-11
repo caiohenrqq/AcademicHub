@@ -10,7 +10,9 @@ import { useHistory } from "react-router";
       <IonPage>
         <IonContent fullscreen>
           <section className="topicos-section">
+            <div className="pesquisar"> 
             
+            </div>
           </section>
         </IonContent>
       </IonPage>

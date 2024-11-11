@@ -2,6 +2,7 @@ import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/r
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Page from './pages/Page';
+import Topicos from './pages/Topicos';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -46,6 +47,10 @@ const App: React.FC = () => {
             </Route>
             <Route path="/folder/:name" exact={true}>
               <Page />
+            </Route>
+
+            <Route path="/topicos" exact={true}>
+              <Topicos />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

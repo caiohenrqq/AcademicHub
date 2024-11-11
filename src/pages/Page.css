@@ -90,3 +90,10 @@ ion-button ion-icon {
     color: var(--cor-branco);
     margin-right: 1rem;
 }
+
+/* sessão tópicos */
+
+.topicos-section {
+  background-color: #f9f9f9;
+  height: 94%;
+}

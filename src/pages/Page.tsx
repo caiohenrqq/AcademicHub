@@ -6,15 +6,22 @@ import {
   IonImg,
   IonContent,
   IonPage,
-  IonTitle,
 } from "@ionic/react";
 import usericon from "/usericon.svg";
 import passwordicon from "/passwordicon.svg";
 import loginicon from "/login.svg";
 import cadastraricon from "/cadastrar.svg"
 import "./Page.css";
+import { useHistory } from 'react-router-dom';
 
 const Page: React.FC = () => {
+
+  const history = useHistory();
+
+  const goToTopicos = () => {
+    history.push('/topicos');
+  };
+
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -44,7 +51,7 @@ const Page: React.FC = () => {
             
             <a className="esqueceu-senha" href="#">Esqueceu sua senha?</a>
 
-            <IonButton shape="round">
+            <IonButton onClick={goToTopicos} shape="round">
               Entrar
               <IonIcon slot="icon-only" icon={loginicon}></IonIcon>
             </IonButton>

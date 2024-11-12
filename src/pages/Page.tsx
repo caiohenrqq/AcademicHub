@@ -15,9 +15,7 @@ import "./Page.css";
 import { useHistory } from 'react-router-dom';
 
 const Page: React.FC = () => {
-
   const history = useHistory();
-
   const goToTopicos = () => {
     history.push('/topicos');
   };

@@ -98,7 +98,33 @@ ion-button ion-icon {
   height: 94%;
 }
 
+.container-pesquisar {
+  display: flex;
+  justify-content: center; 
+  align-items: center;   
+  height: 100%;            
+}
+
 .pesquisar {
   height: 30%;
   background-color: var(--cor-background);
 }
+
+.rounded-searchbar {
+  --border-radius: 20px; 
+  --background: var(--cor-branco); 
+  color: var(--cor-cinza-escuro);
+  padding-top: 10rem;
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchbar-input {
+  font-size: 14px !important;
+}
+
+

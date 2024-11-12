@@ -65,37 +65,37 @@ ion-input {
 }
 
 .esqueceu-senha {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    color: var(--cor-branco);
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    letter-spacing: 0.208px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--cor-branco);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  letter-spacing: 0.208px;
 }
 
 ion-button {
-    --background: var(--cor-cinza-escuro);
-    color: var(--cor-branco);
-    display: flex;
-    flex-direction: column;
-    max-width: 50%;
-    height: 3rem;
-    text-transform: capitalize;
-    letter-spacing: 0.208px;
-    margin: 1rem auto 1rem auto;
+  --background: var(--cor-cinza-escuro);
+  color: var(--cor-branco);
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  height: 3rem;
+  text-transform: capitalize;
+  letter-spacing: 0.208px;
+  margin: 1rem auto 1rem auto;
 }
 
 ion-button ion-icon {
-    color: var(--cor-branco);
-    margin-right: 1rem;
+  color: var(--cor-branco);
+  margin-right: 1rem;
 }
 
 /* sessão tópicos */
 
 .topicos-section {
   background-color: var(--cor-branco);
-  height: 94%;
+  height: 100%;
 }
 
 .pesquisar {
@@ -109,7 +109,7 @@ ion-button ion-icon {
 }
 
 .icone {
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 
 .container-pesquisar {
@@ -136,8 +136,33 @@ ion-button ion-icon {
   font-size: 15px !important;
 }
 
+.footer {
+  --background: var(--cor-primaria);
+  color: var(--cor-branco);
+  font-family: "Syne", sans-serif;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
 
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-left: 1.2rem;
+}
 
+.icon-footer {
+  height: 50px;
+  width: 50px;  
+}
+
+.titulo-footer {
+  font-size: 1rem;
+  letter-spacing: 1.4%;
+  font-weight: bold;
+  color: var(--cor-branco);
+}
 
 
 

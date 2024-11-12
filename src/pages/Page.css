@@ -98,33 +98,46 @@ ion-button ion-icon {
   height: 94%;
 }
 
-.container-pesquisar {
-  display: flex;
-  justify-content: center; 
-  align-items: center;   
-  height: 100%;            
-}
-
 .pesquisar {
   height: 30%;
   background-color: var(--cor-background);
-}
-
-.rounded-searchbar {
-  --border-radius: 20px; 
-  --background: var(--cor-branco); 
-  color: var(--cor-cinza-escuro);
-  padding-top: 10rem;
-  width: 70%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 4rem;
+}
+
+.icone {
+  margin-bottom: 1rem; 
+}
+
+.container-pesquisar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.rounded-searchbar {
+  --border-radius: 20px;
+  --background: var(--cor-branco);
+  color: var(--cor-cinza-escuro);
+  width: 80%;
+}
+
+.menuicon {
+  color: var(--cor-branco);
+  background-color: var(--cor-background) !important;
+  border-radius: 50px;
 }
 
 .searchbar-input {
-  font-size: 14px !important;
+  font-size: 15px !important;
 }
+
+
+
+
 
 

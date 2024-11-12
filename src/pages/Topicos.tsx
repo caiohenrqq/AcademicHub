@@ -1,26 +1,42 @@
 import {
-    IonContent,
-    IonPage,
-  } from "@ionic/react";
-import "./Page.css";
-import { useHistory } from "react-router";
-import { IonSearchbar } from '@ionic/react';
+  IonPage,
+  IonContent,
+  IonSearchbar,
+  IonButtons,
+  IonMenuButton,
+  IonIcon,
+  IonImg,
+} from "@ionic/react";
+import { search } from "ionicons/icons";
 
-  const Topicos: React.FC = () => {
-    return (
-      <IonPage>
-        <IonContent fullscreen>
-          <section className="topicos-section">
-            <div className="pesquisar"> 
-              <div className="container-pesquisar">
-                <IonSearchbar class="rounded-searchbar" placeholder="Escolha seu tópico">
-                </IonSearchbar>
-              </div>
-            </div>
-          </section>
-        </IonContent>
-      </IonPage>
-    );
-  };
-  
-  export default Topicos;
+const PesquisaPage = () => {
+  return (
+<IonPage>
+  <IonContent fullscreen>
+    <section className="topicos-section">
+      <div className="pesquisar">
+        <div className="icone">
+          <IonImg
+            src="/favicon.png"
+            alt="AcademicHub, sua comunidade universitária :)"
+          />
+        </div>
+
+        <div className="container-pesquisar">
+          <IonSearchbar
+            className="rounded-searchbar"
+            placeholder="Escolha seu tópico"
+          />
+          <IonButtons className="menuicon" slot="start">
+            <IonMenuButton autoHide={false}></IonMenuButton>
+          </IonButtons>
+        </div>
+      </div>
+    </section>
+  </IonContent>
+</IonPage>
+
+  );
+};
+
+export default PesquisaPage;

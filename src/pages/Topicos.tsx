@@ -8,7 +8,6 @@ import {
   IonImg,
   IonToolbar,
   IonTitle,
-  IonIcon,
 } from "@ionic/react";
 import { search } from "ionicons/icons";
 import favicon from "/favicon.png";

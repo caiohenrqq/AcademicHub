@@ -2,7 +2,7 @@
 
 :root {
   --cor-background: #043a68;
-  --cor-background-escuro: #032e53;
+  --cor-background-escuro: #033159;
   --cor-branco: #f9f9f9;
   --cor-cinza-escuro: #212427;
   --cor-cinza-claro: #5f5f5f;
@@ -130,7 +130,6 @@ ion-button ion-icon {
 .menuicon {
   color: var(--cor-branco);
   background-color: var(--cor-background-escuro) !important;
-  box-shadow: 0px 2.5px 0.9px 0.1px rgba(0, 0, 0, 0.5);
   border-radius: 50px;
 }
 

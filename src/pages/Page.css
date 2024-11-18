@@ -106,7 +106,7 @@ ion-button ion-icon {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 4rem;
+  padding-top: 1rem;
 }
 
 .icone {
@@ -137,33 +137,6 @@ ion-button ion-icon {
   font-size: 15px !important;
 }
 
-.footer {
-  --background: var(--cor-primaria);
-  color: var(--cor-branco);
-  font-family: "Syne", sans-serif;
-  display: flex;
-  justify-content: center; 
-  align-items: center; 
-}
-
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  margin-left: 1.2rem;
-}
-
-.icon-footer {
-  height: 50px;
-  width: 50px;  
-}
-
-.titulo-footer {
-  font-size: 1rem;
-  letter-spacing: 1.4%;
-  font-weight: bold;
-  color: var(--cor-branco);
-}
 
 
 

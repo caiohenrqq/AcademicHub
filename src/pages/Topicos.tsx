@@ -60,22 +60,6 @@ const PesquisaPage = () => {
             </div>
           </section>
         </IonContent>
-
-        {/* footer */}
-        <IonFooter translucent={true}>
-          <IonToolbar className="footer">
-            <div className="footer-content">
-              <IonImg
-                className="icon-footer"
-                src="/favicon.png"
-                alt="AcademicHub, sua comunidade universitária :)"
-              />
-              <IonTitle className="titulo-footer">
-                um app para universitários.
-              </IonTitle>
-            </div>
-          </IonToolbar>
-        </IonFooter>
       </IonPage>
     </>
   );

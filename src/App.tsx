@@ -1,7 +1,7 @@
 import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import Page from './pages/Page';
+import Login from './pages/Login';
 import Topicos from './pages/Topicos';
 
 /* Core CSS required for Ionic components to work properly */
@@ -46,7 +46,7 @@ const App: React.FC = () => {
               <Redirect to="/folder/Inbox" />
             </Route>
             <Route path="/folder/:name" exact={true}>
-              <Page />
+              <Login />
             </Route>
 
             <Route path="/topicos" exact={true}>

@@ -4,33 +4,26 @@ import {
   IonSearchbar,
   IonButtons,
   IonMenuButton,
-  IonFooter,
   IonImg,
-  IonToolbar,
-  IonTitle,
-  IonMenu,
-  IonButton,
-  IonIcon,
-  IonHeader,
   IonPopover,
 } from "@ionic/react";
-import { search } from "ionicons/icons";
-import favicon from "/favicon.png";
-import {
-  personCircle,
-  ellipsisHorizontal,
-  ellipsisVertical,
-} from "ionicons/icons";
+import Topics from "./Chats";
 
 const PesquisaPage = () => {
+  const topics = [
+    {
+      topicName: "React Basics",
+      lastMessage: "How do hooks work?",
+    },
+    {
+      topicName: "TypeScript Tips",
+      lastMessage: "How to define an interface?",
+    },
+    { topicName: "CSS in JS", lastMessage: "Is Styled-components better?" },
+  ];
   return (
     <>
-      {/* menu */}
-      <IonPopover trigger="click-trigger" triggerAction="click">
-        <IonContent class="ion-padding">Hello World!</IonContent>
-      </IonPopover>
-
-      {/* pagina principal */}
+      {/* Topic's Page */}
       <IonPage id="main-content">
         <IonContent fullscreen>
           <section className="topicos-section">
@@ -41,14 +34,12 @@ const PesquisaPage = () => {
                   alt="AcademicHub, sua comunidade universitária :)"
                 />
               </div>
-
               <div className="container-pesquisar">
                 <IonSearchbar
                   className="rounded-searchbar"
                   placeholder="Escolha seu tópico"
                 />
-
-                {/* botao menu */}
+                {/* Menu Button */}
                 <IonButtons className="menuicon" slot="start">
                   <IonMenuButton
                     id="click-trigger"
@@ -56,8 +47,22 @@ const PesquisaPage = () => {
                     autoHide={false}
                   />
                 </IonButtons>
+                {/* Menu */}
+                <IonPopover trigger="click-trigger" triggerAction="click">
+                  <IonContent class="ion-padding">Hello World!</IonContent>
+                </IonPopover>
               </div>
             </div>
+
+            <section className="chats-section">
+              {topics.map((topic, index) => (
+                <Topics
+                  key={index}
+                  topicName={topic.topicName}
+                  lastMessage={topic.lastMessage}
+                ></Topics>
+              ))}
+            </section>
           </section>
         </IonContent>
       </IonPage>

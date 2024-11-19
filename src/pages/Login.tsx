@@ -14,9 +14,9 @@ import passwordicon from "/passwordicon.svg";
 import loginicon from "/login.svg";
 import cadastraricon from "/cadastrar.svg";
 import { signInWithGoogle } from '../firebaseConfig';
-import './Page.css';
+import './Style.css';
 
-const Page: React.FC = () => {
+const Login: React.FC = () => {
   const history = useHistory();
 
   // Function to navigate to topics after successful login
@@ -87,4 +87,4 @@ const Page: React.FC = () => {
   );
 };
 
-export default Page;
+export default Login;

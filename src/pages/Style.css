@@ -92,7 +92,7 @@ ion-button ion-icon {
   margin-right: 1rem;
 }
 
-/* sessão tópicos */
+/* Topic's Section */
 
 .topicos-section {
   background-color: var(--cor-branco);
@@ -136,6 +136,18 @@ ion-button ion-icon {
 .searchbar-input {
   font-size: 15px !important;
 }
+
+/* Chat's Section */
+
+.chat {
+  border: 1px solid var(--cor-cinza-escuro);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+  background-color: var(--cor-branco);
+}
+
+
 
 
 

@@ -26,11 +26,11 @@ interface Topics {
 const Chats: React.FC<Topics> = ({ topicName, lastMessage }) => {
   return (
     <div className="chat">
-      <IonList inset={true}>
+      <IonList lines="full" inset={true}>
         <IonItem button={true} detail={false}>
           <IonLabel color="medium">
             <strong className="topic-name">{topicName}</strong>
-            <br />
+              <br />
             <IonNote color="medium" className="ion-text-wrap">
             {lastMessage}
             </IonNote>

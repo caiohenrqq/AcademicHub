@@ -65,16 +65,6 @@ ion-input {
   --highlight-color-focused: transparent;
 }
 
-.esqueceu-senha {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-  color: var(--cor-branco);
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  letter-spacing: 0.208px;
-}
-
 ion-button {
   --background: var(--cor-cinza-escuro);
   color: var(--cor-branco);
@@ -105,8 +95,7 @@ ion-button ion-icon {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding-top: 1rem;
+  align-items: center;  
 }
 
 .icone {
@@ -141,8 +130,11 @@ ion-button ion-icon {
 
 ion-list {
   background-color: var(--cor-branco) !important;
+  border-bottom: 1px solid #cfcfcf ;
 }
 
 .topic-name {
+
   color: var(--cor-cinza-escuro);
 }
+

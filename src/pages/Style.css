@@ -139,29 +139,10 @@ ion-button ion-icon {
 
 /* Chat's Section */
 
-.chat {
-  border: 1px solid var(--cor-cinza-escuro);
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 12px;
-  background-color: var(--cor-branco);
+ion-list {
+  background-color: var(--cor-branco) !important;
 }
 
 .topic-name {
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
   color: var(--cor-cinza-escuro);
 }
-
-.last-message {
-  margin: 4px 0 0;
-  font-size: 14px;
-  color: var(--cor-cinza-escuro);
-}
-
-
-
-
-
-

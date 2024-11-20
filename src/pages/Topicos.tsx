@@ -19,7 +19,10 @@ const PesquisaPage = () => {
       topicName: "TypeScript Tips",
       lastMessage: "How to define an interface?",
     },
-    { topicName: "CSS in JS", lastMessage: "Is Styled-components better?" },
+    { 
+      topicName: "CSS in JS", 
+      lastMessage: "Is Styled-components better?" 
+    },
   ];
   return (
     <>

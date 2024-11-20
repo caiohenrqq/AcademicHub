@@ -11,7 +11,7 @@ const Chats: React.FC<Topics> = ({ topicName, lastMessage }) => {
   const history = useHistory();
 
   const goToChat = () => {
-    window.location.href = `/chat/${topicName}`;
+    window.location.href = `/topicos/${topicName}`;
   };
 
   return (

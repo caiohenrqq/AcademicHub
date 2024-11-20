@@ -13,15 +13,15 @@ import Topics from "./Chats";
 const PesquisaPage = () => {
   const topics = [
     {
-      topicName: "React-Basics",
+      topicName: "Math",
       lastMessage: "How do hooks work?",
     },
     {
-      topicName: "TypeScript-Tips",
+      topicName: "Computer-Science",
       lastMessage: "How to define an interface?",
     },
     { 
-      topicName: "CSS-in-JS", 
+      topicName: "Another-Stuff", 
       lastMessage: "Is Styled-components better?" 
     },
   ];

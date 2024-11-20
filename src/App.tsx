@@ -9,6 +9,7 @@ import { Redirect, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Topicos from "./pages/Topicos";
 import ChatView from "./pages/ChatView";
+import Chats from "./pages/Chats";
 import React, { useState } from "react";
 
 /* Core CSS required for Ionic components to work properly */
@@ -41,6 +42,7 @@ import "@ionic/react/css/palettes/dark.system.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+
 setupIonicReact();
 
 const App: React.FC = () => {
@@ -58,7 +60,7 @@ const App: React.FC = () => {
             <Route path="/topicos" exact={true}>
               <Topicos />
             </Route>
-            <Route path="/chat/:topicName" component={ChatView} />
+            <Route path="/topicos/:topicName" component={ChatView} />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

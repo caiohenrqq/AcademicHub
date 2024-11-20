@@ -1,38 +1,30 @@
 import React from "react";
 import "./Style.css";
 import { useHistory } from "react-router-dom";
-import {
-  IonIcon,
-  IonItem,
-  IonLabel,
-  IonList,
-  IonNote,
-  IonText,
-} from "@ionic/react";
-import { chevronForward, listCircle } from "ionicons/icons";
+import { IonItem, IonLabel, IonList, IonNote } from "@ionic/react";
 
 interface Topics {
   topicName: string;
   lastMessage: string;
+  topicId: number; 
 }
 
-// const history = useHistory();
+const Chats: React.FC<Topics> = ({ topicName, lastMessage, topicId }) => {
+  const history = useHistory();
 
-// // Function to navigate to topics after successful login
-// const goToTopicos = () => {
-//   history.push("/topicos");
-// };
-
-const Chats: React.FC<Topics> = ({ topicName, lastMessage }) => {
+  const goToChat = () => {
+    history.push(`/topicos/?topicName=${encodeURIComponent(topicId)}`);
+  };
+  
   return (
-    <div className="chat">
+    <div onClick={goToChat} className="chat">
       <IonList lines="full" inset={true}>
         <IonItem button={true} detail={false}>
           <IonLabel color="medium">
             <strong className="topic-name">{topicName}</strong>
-              <br />
+            <br />
             <IonNote color="medium" className="ion-text-wrap">
-            {lastMessage}
+              {lastMessage}
             </IonNote>
           </IonLabel>
           <div className="metadata-end-wrapper" slot="end">

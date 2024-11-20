@@ -9,6 +9,7 @@ import {
 } from "@ionic/react";
 import Topics from "./Chats";
 
+
 const PesquisaPage = () => {
   const topics = [
     {
@@ -60,7 +61,7 @@ const PesquisaPage = () => {
             <section className="chats-section">
               {topics.map((topic, index) => (
                 <Topics
-                  key={index}
+                  topicId={index}
                   topicName={topic.topicName}
                   lastMessage={topic.lastMessage}
                 ></Topics>

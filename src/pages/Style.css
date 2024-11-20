@@ -130,11 +130,11 @@ ion-button ion-icon {
 
 ion-list {
   background-color: var(--cor-branco) !important;
-  border-bottom: 1px solid #cfcfcf ;
+  border-bottom: 1px solid #cfcfcf;
 }
 
-.topic-name {
 
+.topic-name {
   color: var(--cor-cinza-escuro);
 }
 

@@ -1,21 +1,19 @@
 import React from "react";
-import "./Style.css";
+import { IonList, IonItem, IonLabel, IonNote } from "@ionic/react";
 import { useHistory } from "react-router-dom";
-import { IonItem, IonLabel, IonList, IonNote } from "@ionic/react";
 
 interface Topics {
   topicName: string;
   lastMessage: string;
-  topicId: number; 
 }
 
-const Chats: React.FC<Topics> = ({ topicName, lastMessage, topicId }) => {
+const Chats: React.FC<Topics> = ({ topicName, lastMessage }) => {
   const history = useHistory();
 
   const goToChat = () => {
-    history.push(`/topicos/?topicName=${encodeURIComponent(topicId)}`);
+    window.location.href = `/chat/${topicName}`;
   };
-  
+
   return (
     <div onClick={goToChat} className="chat">
       <IonList lines="full" inset={true}>

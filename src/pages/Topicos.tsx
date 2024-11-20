@@ -13,15 +13,15 @@ import Topics from "./Chats";
 const PesquisaPage = () => {
   const topics = [
     {
-      topicName: "React Basics",
+      topicName: "React-Basics",
       lastMessage: "How do hooks work?",
     },
     {
-      topicName: "TypeScript Tips",
+      topicName: "TypeScript-Tips",
       lastMessage: "How to define an interface?",
     },
     { 
-      topicName: "CSS in JS", 
+      topicName: "CSS-in-JS", 
       lastMessage: "Is Styled-components better?" 
     },
   ];
@@ -61,7 +61,7 @@ const PesquisaPage = () => {
             <section className="chats-section">
               {topics.map((topic, index) => (
                 <Topics
-                  topicId={index}
+                  key={index}
                   topicName={topic.topicName}
                   lastMessage={topic.lastMessage}
                 ></Topics>

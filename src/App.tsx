@@ -3,6 +3,7 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import Topicos from './pages/Topicos';
+import React, { useState } from 'react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -37,6 +38,13 @@ import './theme/variables.css';
 setupIonicReact();
 
 const App: React.FC = () => {
+
+  const [isAuthenticated, setisAuthenticated] = useState(false);
+  
+  const handleLogin = () => {
+    setisAuthenticated(true);
+  } 
+
   return (
     <IonApp>
       <IonReactRouter>
@@ -48,7 +56,6 @@ const App: React.FC = () => {
             <Route path="/folder/:name" exact={true}>
               <Login />
             </Route>
-
             <Route path="/topicos" exact={true}>
               <Topicos />
             </Route>

@@ -147,6 +147,19 @@ ion-button ion-icon {
   background-color: var(--cor-branco);
 }
 
+.topic-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--cor-cinza-escuro);
+}
+
+.last-message {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: var(--cor-cinza-escuro);
+}
+
 
 
 

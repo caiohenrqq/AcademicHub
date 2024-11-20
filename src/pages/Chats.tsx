@@ -10,9 +10,9 @@ const Chats: React.FC<Topics> = ({ topicName, lastMessage }) => {
   return (
   <div className="chat">
     <h2 className="topic-name">
-        {topicName};
+        {topicName}
       <p className="last-message">
-        {lastMessage};
+        {lastMessage}
       </p>
     </h2>
   </div>

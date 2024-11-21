@@ -1,32 +1,12 @@
 import React from 'react';
-import {
-  IonButton,
-  IonImg,
-  IonContent,
-  IonPage,
-} from "@ionic/react";
-import { useHistory } from 'react-router-dom';
-import { signInWithGoogle } from '../firebaseConfig';
+import { IonButton, IonImg, IonContent, IonPage } from "@ionic/react";
 import './Style.css';
 
-const Login: React.FC = () => {
-  const history = useHistory();
+interface LoginProps {
+  signInWithGoogle: () => void;
+}
 
-  // Function to navigate to topics after successful login
-  const goToTopicos = () => {
-    history.push('/topicos');
-  };
-
-  // Handle Google login
-  const handleGoogleLogin = async () => {
-    try {
-      await signInWithGoogle();
-      goToTopicos(); 
-    } catch (error) {
-      console.error('Google Login Error:', error);
-    }
-  };
-
+const Login: React.FC<LoginProps> = ({ signInWithGoogle }) => {
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -41,8 +21,7 @@ const Login: React.FC = () => {
           </div>
 
           <div className="login-inputs">
-            {/* Button for Google Login */}
-            <IonButton onClick={handleGoogleLogin} shape="round" color="secondary">
+            <IonButton onClick={signInWithGoogle} shape="round">
               Entrar com Google
             </IonButton>
           </div>

@@ -6,28 +6,38 @@ import {
   IonMenuButton,
   IonImg,
   IonPopover,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonText,
 } from "@ionic/react";
-import Topics from "./Chats";
 
+import "./Style.css";
 
-const PesquisaPage = () => {
+import { Link } from "react-router-dom";
+
+const Topicos = () => {
+  // Sample data (this will be dynamic in the future, pulled from a database)
   const topics = [
     {
-      topicName: "Math",
-      lastMessage: "How do hooks work?",
+      name: "Mathematics",
+      lastUser: "John Doe",
+      lastMessage: "Can anyone help with calculus?",
+      lastMessageTime: "10:30 AM",
+      id: 1,
     },
     {
-      topicName: "Computer-Science",
-      lastMessage: "How to define an interface?",
+      name: "CS:GO Strategies",
+      lastUser: "Jane Smith",
+      lastMessage: "Headshot in the A site!",
+      lastMessageTime: "9:15 AM",
+      id: 2,
     },
-    { 
-      topicName: "Another-Stuff", 
-      lastMessage: "Is Styled-components better?" 
-    },
+    // Add more topics here as needed
   ];
+
   return (
     <>
-      {/* Topic's Page */}
       <IonPage id="main-content">
         <IonContent fullscreen>
           <section className="topicos-section">
@@ -43,7 +53,6 @@ const PesquisaPage = () => {
                   className="rounded-searchbar"
                   placeholder="Escolha seu tópico"
                 />
-                {/* Menu Button */}
                 <IonButtons className="menuicon" slot="start">
                   <IonMenuButton
                     id="click-trigger"
@@ -51,14 +60,34 @@ const PesquisaPage = () => {
                     autoHide={false}
                   />
                 </IonButtons>
-                {/* Menu */}
                 <IonPopover trigger="click-trigger" triggerAction="click">
-                  <IonContent class="ion-padding">Hello World!</IonContent>
+                  <IonContent class="ion-padding">
+                    Here is going to be a great button!
+                  </IonContent>
                 </IonPopover>
               </div>
             </div>
 
             <section className="chats-section">
+              <IonList>
+                {topics.map((topic) => (
+                  <IonItem
+                    button
+                    key={topic.id}
+                    routerLink={`/chat/${topic.id}`}
+                  >
+                    <IonLabel>
+                      <h2 className="topic-name">{topic.name}</h2>
+                      <p>
+                        <IonText className="topic-name" color="dark">
+                          <strong>{topic.lastUser}</strong>: {topic.lastMessage}
+                        </IonText>
+                        <span> - {topic.lastMessageTime}</span>
+                      </p>
+                    </IonLabel>
+                  </IonItem>
+                ))}
+              </IonList>
             </section>
           </section>
         </IonContent>
@@ -67,4 +96,4 @@ const PesquisaPage = () => {
   );
 };
 
-export default PesquisaPage;
+export default Topicos;

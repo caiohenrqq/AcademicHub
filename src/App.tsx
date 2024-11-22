@@ -44,7 +44,7 @@ import { useState, useEffect } from "react";
 
 import Login from "./pages/Login";
 import Topicos from "./pages/Topicos";
-import ChatView from "./pages/ChatView";
+import ChatView from "./pages/Chat";
 
 import { firebaseApp } from "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";

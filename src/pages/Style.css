@@ -249,7 +249,13 @@ ion-footer {
   align-items: center;
 }
 
+.chat-section strong{
+  color: #212427 !important;
+}
 
+.lastHourMessage {
+  font-size: 12px !important;
+}
 
 
 

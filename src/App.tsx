@@ -5,7 +5,7 @@ import {
   setupIonicReact,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
 
 /* Core CSS required for Ionic components to work properly */
@@ -67,24 +67,26 @@ const App = () => {
   }, []);
 
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to={isLoggedIn ? "/topicos" : "/folder/Login"} />
-            </Route>
-            <Route path="/folder/Login" exact={true}>
-              <Login />
-            </Route>
-            <Route path="/topicos" exact={true}>
-              <Topicos />
-            </Route>
-            <Route path="/chat/:topicName" component={ChatView} />
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
+<IonApp>
+  <IonReactRouter>
+    <IonSplitPane contentId="main">
+      <IonRouterOutlet id="main">
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to={isLoggedIn ? "/topicos" : "/folder/Login"} />
+          </Route>
+          <Route path="/folder/Login" exact>
+            <Login />
+          </Route>
+          <Route path="/topicos" exact>
+            <Topicos />
+          </Route>
+          <Route path="/chat/:topicName" component={ChatView} />
+        </Switch>
+      </IonRouterOutlet>
+    </IonSplitPane>
+  </IonReactRouter>
+</IonApp>
   );
 };
 

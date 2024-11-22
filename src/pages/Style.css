@@ -133,7 +133,12 @@ ion-list {
   border-bottom: 1px solid #cfcfcf;
 }
 
+.topic-message {
+  color: var(--cor-cinza-escuro);
+}
+
 .topic-name {
+  font-weight: bold !important;
   color: var(--cor-cinza-escuro);
 }
 
@@ -249,13 +254,7 @@ ion-footer {
   align-items: center;
 }
 
-.chat-section strong{
-  color: #212427 !important;
-}
 
-.lastHourMessage {
-  font-size: 12px !important;
-}
 
 
 

@@ -18,8 +18,8 @@ const Chat: React.FC = () => {
       setMessage("");
     }
   };
-
-  const { topicName } = useParams<{ topicName: string }>();
+  const { topicId, topicName } = useParams<{ topicId: string, topicName: string }>(); // Get the id and name from URL
+  console.log("Topic:", topicName + ".");
 
   return (
     <IonPage>
@@ -54,7 +54,7 @@ const Chat: React.FC = () => {
           <IonInput
             value={message}
             onIonChange={(e) => setMessage(e.detail.value!)}
-            placeholder="Type a message..."
+            placeholder="Escreva sua mensagem..."
             className="input"
             clearInput={true}
           />

@@ -59,13 +59,6 @@ const PesquisaPage = () => {
             </div>
 
             <section className="chats-section">
-              {topics.map((topic, index) => (
-                <Topics
-                  key={index}
-                  topicName={topic.topicName}
-                  lastMessage={topic.lastMessage}
-                ></Topics>
-              ))}
             </section>
           </section>
         </IonContent>

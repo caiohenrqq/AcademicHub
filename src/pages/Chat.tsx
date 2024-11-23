@@ -1,28 +1,57 @@
-import React, { useState } from "react";
-import { IonContent, IonHeader, IonButtons, IonButton, IonIcon, IonTitle, IonFooter, IonInput, IonFabButton, IonPage } from "@ionic/react";
+import React, { useEffect, useState } from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonButtons,
+  IonButton,
+  IonIcon,
+  IonTitle,
+  IonFooter,
+  IonInput,
+  IonFabButton,
+} from "@ionic/react";
 import { paperPlane, arrowBack } from "ionicons/icons";
-import { useParams } from "react-router-dom";
 import "./Style.css";
+import { useParams } from "react-router-dom";
+import { collection, addDoc, onSnapshot, query, orderBy } from "firebase/firestore";
+import { database } from "../firebase";
 
 const Chat: React.FC = () => {
+  const { topicId } = useParams<{ topicId: string }>();
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
-    { text: "Hey, how are you?", sender: "other", time: "10:30:32 AM" },
-    { text: "I'm good, thanks for asking!", sender: "me", time: "10:32:16 AM" },
-  ]);
+  const [messages, setMessages] = useState<{ id: string; text: string; sender: string; timestamp: any }[]>([]);
 
-  const handleSendMessage = () => {
+  useEffect(() => {
+    // Real-time listener for Firestore messages
+    const messagesRef = collection(database, `topics/${topicId}/messages`);
+    const q = query(messagesRef, orderBy("timestamp", "asc"));
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      setMessages(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        })) as any
+      );
+    });
+
+    return () => unsubscribe(); // Cleanup listener
+  }, [topicId]);
+
+  const handleSendMessage = async () => {
     if (message.trim()) {
-      const newMessage = { text: message, sender: "me", time: new Date().toLocaleTimeString() };
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
+      const messagesRef = collection(database, `topics/${topicId}/messages`);
+      await addDoc(messagesRef, {
+        text: message,
+        sender: "currentUserId", // Replace with authenticated user ID
+        timestamp: new Date(),
+      });
       setMessage("");
     }
   };
-  const { topicId, topicName } = useParams<{ topicId: string, topicName: string }>(); // Get the id and name from URL
-  console.log("Topic:", topicName + ".");
 
   return (
-    <IonPage>
+    <div className="chat-view">
       {/* Chat Header */}
       <IonHeader>
         <IonButtons slot="start">
@@ -30,31 +59,30 @@ const Chat: React.FC = () => {
             <IonIcon icon={arrowBack} />
           </IonButton>
         </IonButtons>
-        <IonTitle>{topicName}</IonTitle>
+        <IonTitle>{topicId}</IonTitle>
       </IonHeader>
 
-      {/* Chat Content: Messages */}
+      {/* Chat Content */}
       <IonContent className="chat-content">
         <div className="messages">
-          {messages.map((msg, index) => (
+          {messages.map((msg) => (
             <div
-              key={index}
-              className={`message ${msg.sender === "me" ? "message-sent" : "message-received"}`}
+              key={msg.id}
+              className={`message ${msg.sender === "currentUserId" ? "message-sent" : "message-received"}`}
             >
-              <div>{msg.text}</div>
-              <div className="message-time">{msg.time}</div>
+              {msg.text}
             </div>
           ))}
         </div>
       </IonContent>
 
-      {/* Message Input Area */}
+      {/* Message Input */}
       <IonFooter>
         <div className="message-input-container">
           <IonInput
             value={message}
             onIonChange={(e) => setMessage(e.detail.value!)}
-            placeholder="Escreva sua mensagem..."
+            placeholder="Type a message..."
             className="input"
             clearInput={true}
           />
@@ -63,7 +91,7 @@ const Chat: React.FC = () => {
           </IonFabButton>
         </div>
       </IonFooter>
-    </IonPage>
+    </div>
   );
 };
 

@@ -23,8 +23,8 @@ const Chat: React.FC = () => {
 
   useEffect(() => {
     // Real-time listener for Firestore messages
-    const messagesRef = collection(database, `topics/${topicId}/messages`);
-    const q = query(messagesRef, orderBy("timestamp", "asc"));
+    const messagesPath = collection(database, `topics/${topicId}/messages`);
+    const q = query(messagesPath, orderBy("timestamp", "asc"));
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setMessages(
@@ -35,18 +35,18 @@ const Chat: React.FC = () => {
       );
     });
 
-    return () => unsubscribe(); // Cleanup listener
+    return () => unsubscribe(); 
   }, [topicId]);
 
   const handleSendMessage = async () => {
     if (message.trim()) {
-      const messagesRef = collection(database, `topics/${topicId}/messages`);
-      await addDoc(messagesRef, {
+      const messagesPath = collection(database, `topics/${topicId}/messages`);
+      await addDoc(messagesPath, {
         text: message,
-        sender: "currentUserId", // Replace with authenticated user ID
+        sender: "currentUserId", 
         timestamp: new Date(),
       });
-      setMessage("");
+      setMessage(""); 
     }
   };
 

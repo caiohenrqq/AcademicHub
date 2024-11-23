@@ -44,10 +44,10 @@ import { useState, useEffect } from "react";
 
 import Login from "./pages/Login";
 import Topicos from "./pages/Topicos";
-import ChatView from "./pages/Chat";
+import Chat from "./pages/Chat";
 
 import { firebaseApp } from "./firebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";;
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -81,7 +81,7 @@ const App = () => {
           <Route path="/topicos" exact>
             <Topicos />
           </Route>
-          <Route path="/chat/:topicName" component={ChatView} />
+          <Route path="/chat/:topicId" component={Chat} />
         </Switch>
       </IonRouterOutlet>
     </IonSplitPane>

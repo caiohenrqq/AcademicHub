@@ -71,16 +71,16 @@ const Topicos = () => {
             <section className="chats-section">
               <IonList>
                 {topics.map((topic) => (
-                  <IonItem button key={topic.id} routerLink={`/chat/${topic.id}/${topic.name}`}>
-                  <IonLabel>
-                    <h2 className="topic-name">{topic.name}</h2>
-                    <p>
-                      <IonText className="topic-message" color="dark">
-                        <strong>{topic.lastUser}</strong>: {topic.lastMessage}
-                      </IonText>
-                      <span> - {topic.lastMessageTime}</span>
-                    </p>
-                  </IonLabel>
+                  <IonItem button key={topic.id} routerLink={`/chat/${topic.id}`}>
+                    <IonLabel>
+                      <h2 className="topic-name">{topic.name}</h2>
+                      <p>
+                        <IonText className="topic-name" color="dark">
+                          <strong>{topic.lastUser}</strong>: {topic.lastMessage}
+                        </IonText>
+                        <span> - {topic.lastMessageTime}</span>
+                      </p>
+                    </IonLabel>
                   </IonItem>
                 ))}
               </IonList>

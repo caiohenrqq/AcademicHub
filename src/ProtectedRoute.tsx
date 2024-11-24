@@ -1,7 +1,7 @@
 import React from "react";
 import { Redirect, Route, RouteProps } from "react-router-dom";
 import { useUser } from "./UserContext";
-import LoadingPopup from "./Loading"; // Import your LoadingPopup component
+import LoadingPopup from "./Loading"; 
 
 interface ProtectedRouteProps extends RouteProps {
   render: (props: any) => React.ReactNode;
@@ -9,7 +9,7 @@ interface ProtectedRouteProps extends RouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ render, ...rest }) => {
   const { user, loading } = useUser();
-  console.log("ProtectedRoute: User:", user, "Loading:", loading);
+  console.log("Loading:", loading);
 
   if (loading) {
     return <LoadingPopup isOpen={true} />;

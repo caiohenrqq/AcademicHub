@@ -46,10 +46,7 @@ import { UserProvider, useUser } from "../src/UserContext";
 import ProtectedRoute from "./ProtectedRoute";
 
 const AuthRedirect: React.FC = () => {
-  const { user, loading } = useUser();
-
-  if (loading) return <div>Loading...</div>; // Show a loader while auth state is being determined
-
+  const { user } = useUser();
   return <Redirect to={user ? "/topicos" : "/folder/Login"} />;
 };
 

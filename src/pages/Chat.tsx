@@ -9,6 +9,7 @@ import {
   IonFooter,
   IonInput,
   IonFabButton,
+  IonLoading,
 } from "@ionic/react";
 import { paperPlane, arrowBack } from "ionicons/icons";
 import "./Style.css";
@@ -16,12 +17,14 @@ import { useParams } from "react-router-dom";
 import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import { getAuth } from "firebase/auth";
+import LoadingPopup from "../Loading";
 
 const Chat: React.FC = () => {  
   const { topicId } = useParams<{ topicId: string }>();
-  const [topicName, setTopicName] = useState<string | null>(null); // Topic name state
+  const [topicName, setTopicName] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<{ id: string; text: string; sender: string; timestamp: any }[]>([]);
+  const [loading, setLoading] = useState(true); 
 
   // Fetch topic name based on topicId
   useEffect(() => {
@@ -38,6 +41,8 @@ const Chat: React.FC = () => {
       } catch (error) {
         console.error("Error fetching topic name:", error);
         setTopicName("Error Loading Topic");
+      } finally {
+        setLoading(false); // Set loading to false once the data is fetched
       }
     };
 
@@ -61,11 +66,10 @@ const Chat: React.FC = () => {
     return () => unsubscribe();
   }, [topicId]);
 
-
   const handleSendMessage = async () => {
     const auth = getAuth(); // Get the Firebase authentication object
     const currentUser = auth.currentUser; // Get the currently authenticated user
-    
+
     if (currentUser && message.trim()) {
       const messagesPath = collection(database, `topics/${topicId}/messages`);
       await addDoc(messagesPath, {
@@ -77,9 +81,8 @@ const Chat: React.FC = () => {
     } else {
       console.log("User not authenticated or message is empty");
     }
-  };  
-  
-  // Just for currentUser be able to change to the escope of chat-content
+  };
+
   const auth = getAuth(); // Get the Firebase authentication object
   const currentUser = auth.currentUser; // Get the currently authenticated user
 
@@ -92,7 +95,7 @@ const Chat: React.FC = () => {
             <IonIcon icon={arrowBack} />
           </IonButton>
         </IonButtons>
-        <IonTitle>{topicName || "Loading..."}</IonTitle>
+        <IonTitle>{loading ? "Loading..." : topicName}</IonTitle>
       </IonHeader>
 
       {/* Chat Content */}
@@ -124,6 +127,9 @@ const Chat: React.FC = () => {
           </IonFabButton>
         </div>
       </IonFooter>
+
+      {/* Loading Popup */}
+      <LoadingPopup isOpen={loading} />
     </div>
   );
 };

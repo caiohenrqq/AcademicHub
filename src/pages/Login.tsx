@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import "./Style.css";
 
 const Login = () => {
-  const { loginWithGoogle, user } = useUser();
+  const { loginWithGoogle } = useUser();
   const history = useHistory();
 
   const handleGoogleLogin = async () => {

@@ -13,16 +13,38 @@ import {
 import { paperPlane, arrowBack } from "ionicons/icons";
 import "./Style.css";
 import { useParams } from "react-router-dom";
-import { collection, addDoc, onSnapshot, query, orderBy } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 
-const Chat: React.FC = () => {
+const Chat: React.FC = () => {  
   const { topicId } = useParams<{ topicId: string }>();
+  const [topicName, setTopicName] = useState<string | null>(null); // Topic name state
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<{ id: string; text: string; sender: string; timestamp: any }[]>([]);
 
+  // Fetch topic name based on topicId
   useEffect(() => {
-    // Real-time listener for Firestore messages
+    const fetchTopicName = async () => {
+      try {
+        const topicDoc = doc(database, "topics", topicId);
+        const topicSnapshot = await getDoc(topicDoc);
+
+        if (topicSnapshot.exists()) {
+          setTopicName(topicSnapshot.data().name || "Unknown Topic");
+        } else {
+          setTopicName("Topic Not Found");
+        }
+      } catch (error) {
+        console.error("Error fetching topic name:", error);
+        setTopicName("Error Loading Topic");
+      }
+    };
+
+    fetchTopicName();
+  }, [topicId]);
+
+  // Fetch and listen for messages
+  useEffect(() => {
     const messagesPath = collection(database, `topics/${topicId}/messages`);
     const q = query(messagesPath, orderBy("timestamp", "asc"));
 
@@ -35,7 +57,7 @@ const Chat: React.FC = () => {
       );
     });
 
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, [topicId]);
 
   const handleSendMessage = async () => {
@@ -59,7 +81,7 @@ const Chat: React.FC = () => {
             <IonIcon icon={arrowBack} />
           </IonButton>
         </IonButtons>
-        <IonTitle>{topicId}</IonTitle>
+        <IonTitle>{topicName || "Loading..."}</IonTitle>
       </IonHeader>
 
       {/* Chat Content */}

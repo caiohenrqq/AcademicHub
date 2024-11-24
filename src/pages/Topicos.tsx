@@ -24,7 +24,6 @@ const Topicos = () => {
       const topicsSnapshot = await getDocs(collection(database, "topics"));
       const fetchedTopics = [];
 
-      // Loop through each topic
       for (const topicDoc of topicsSnapshot.docs) {
         const topicId = topicDoc.id;
         const messagesRef = collection(database, `topics/${topicId}/messages`);
@@ -57,7 +56,7 @@ const Topicos = () => {
           lastUser,
           lastMessageTime,
         });
-        
+
       }
 
       setTopics(fetchedTopics); // Update state with fetched topics

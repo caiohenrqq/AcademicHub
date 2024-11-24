@@ -15,6 +15,7 @@ import "./Style.css";
 import { useParams } from "react-router-dom";
 import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
+import { getAuth } from "firebase/auth";
 
 const Chat: React.FC = () => {  
   const { topicId } = useParams<{ topicId: string }>();
@@ -60,17 +61,27 @@ const Chat: React.FC = () => {
     return () => unsubscribe();
   }, [topicId]);
 
+
   const handleSendMessage = async () => {
-    if (message.trim()) {
+    const auth = getAuth(); // Get the Firebase authentication object
+    const currentUser = auth.currentUser; // Get the currently authenticated user
+    
+    if (currentUser && message.trim()) {
       const messagesPath = collection(database, `topics/${topicId}/messages`);
       await addDoc(messagesPath, {
         text: message,
-        sender: "currentUserId", 
+        sender: currentUser.displayName,
         timestamp: new Date(),
       });
       setMessage(""); 
+    } else {
+      console.log("User not authenticated or message is empty");
     }
-  };
+  };  
+  
+  // Just for currentUser be able to change to the escope of chat-content
+  const auth = getAuth(); // Get the Firebase authentication object
+  const currentUser = auth.currentUser; // Get the currently authenticated user
 
   return (
     <div className="chat-view">
@@ -90,7 +101,7 @@ const Chat: React.FC = () => {
           {messages.map((msg) => (
             <div
               key={msg.id}
-              className={`message ${msg.sender === "currentUserId" ? "message-sent" : "message-received"}`}
+              className={`message ${msg.sender === currentUser?.displayName ? "message-sent" : "message-received"}`}
             >
               {msg.text}
             </div>

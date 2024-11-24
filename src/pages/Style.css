@@ -262,9 +262,9 @@ ion-footer {
 .topic-name p {
   display: flex;
   justify-content: space-between;
-  align-items: center; /* Optional: centers content vertically */
+  align-items: center;
 }
 
 .right {
-  margin-left: auto; /* Pushes this span to the right */
+  margin-left: auto; 
 }

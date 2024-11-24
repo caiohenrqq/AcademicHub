@@ -29,7 +29,7 @@ import { useHistory } from "react-router-dom";
 const Topicos = () => {
   const { user, loading } = useUser();
 
-  const { logout } = useUser(); 
+  const { logout } = useUser();
   const history = useHistory();
 
   const handleLogout = () => {
@@ -85,7 +85,7 @@ const Topicos = () => {
       setTopics(fetchedTopics);
     };
 
-    fetchTopics(); 
+    fetchTopics();
   }, []); // Empty dependency array ensures it runs once on component mount
 
   return (
@@ -141,9 +141,12 @@ const Topicos = () => {
                     <h2>{topic.name}</h2>
                     <p>
                       <IonText className="topic-message">
-                        <strong>{topic.lastUser}</strong>: {topic.lastMessage}
+                        <strong>{topic.lastUser}</strong>
+                        {topic.lastMessage
+                          ? `: ${topic.lastMessage}`
+                          : "Nenhuma mensagem."}
                       </IonText>
-                      <span className="right"> - {topic.lastMessageTime}</span>
+                      <span className="right">{topic.lastMessageTime}</span>
                     </p>
                   </IonLabel>
                 </IonItem>

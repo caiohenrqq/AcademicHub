@@ -95,7 +95,7 @@ ion-button ion-icon {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
 
 .icone {
@@ -134,14 +134,13 @@ ion-list {
 }
 
 .topic-message {
-  color: var(--cor-cinza-escuro);
+  color: var(--cor-cinza-escuro) !important;
 }
 
 .topic-name {
   font-weight: bold !important;
   color: var(--cor-cinza-escuro);
 }
-
 
 /* Full-Screen Chat View */
 
@@ -180,7 +179,7 @@ ion-buttons {
   overflow-y: auto;
   padding: 10px;
   --background: url(/bg-chat.png) no-repeat center center !important;
-  background-size: cover !important;  
+  background-size: cover !important;
 }
 
 /* Messages list */
@@ -257,7 +256,7 @@ ion-footer {
 .center {
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
 }
 
 .topic-name p {
@@ -269,7 +268,3 @@ ion-footer {
 .right {
   margin-left: auto; /* Pushes this span to the right */
 }
-
-
-
-

@@ -7,7 +7,6 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -40,20 +39,24 @@ import "./theme/variables.css";
 
 setupIonicReact();
 
-import { useState, useEffect } from "react";
-
 import Login from "./pages/Login";
 import Topicos from "./pages/Topicos";
 import Chat from "./pages/Chat";
 import { UserProvider, useUser } from "../src/UserContext";
+import ProtectedRoute from "./ProtectedRoute";
 
-import { firebaseApp } from "./firebase";
-import { getAuth, onAuthStateChanged } from "firebase/auth";;
+const AuthRedirect: React.FC = () => {
+  const { user, loading } = useUser();
+
+  if (loading) return <div>Loading...</div>; // Show a loader while auth state is being determined
+
+  return <Redirect to={user ? "/topicos" : "/folder/Login"} />;
+};
 
 const App: React.FC = () => {
   return (
     <IonApp>
-      <UserProvider> {/* Wrapping the app */}
+      <UserProvider>
         <IonReactRouter>
           <IonSplitPane contentId="main">
             <IonRouterOutlet id="main">
@@ -64,9 +67,11 @@ const App: React.FC = () => {
                 <Route path="/folder/Login" exact>
                   <Login />
                 </Route>
-                <Route path="/topicos" exact>
-                  <Topicos />
-                </Route>
+                <ProtectedRoute
+                  path="/topicos"
+                  exact
+                  render={(props) => <Topicos {...props} />}
+                />
                 <Route path="/chat/:topicId" component={Chat} />
               </Switch>
             </IonRouterOutlet>
@@ -75,15 +80,6 @@ const App: React.FC = () => {
       </UserProvider>
     </IonApp>
   );
-};
-
-// AuthRedirect handles conditional redirects
-const AuthRedirect: React.FC = () => {
-  const { user, loading } = useUser();
-
-  if (loading) return <div>Loading...</div>; // Show a loader while auth state is being determined
-
-  return <Redirect to={user ? "/topicos" : "/folder/Login"} />;
 };
 
 export default App;

@@ -1,19 +1,21 @@
+import React from "react";
 import { IonButton, IonImg, IonContent, IonPage } from "@ionic/react";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { firebaseApp } from "../firebase";
+import { useUser } from "../UserContext";
+import { useHistory } from "react-router-dom";
 import "./Style.css";
 
 const Login = () => {
-    const handleGoogleLogin = async () => {
-    console.log("Google login initiated");
-    const auth = getAuth(firebaseApp);
-    const provider = new GoogleAuthProvider();
+  const { loginWithGoogle, user } = useUser();
+  const history = useHistory();
 
+  const handleGoogleLogin = async () => {
+    console.log("Google login initiated");
     try {
-      const result = await signInWithPopup(auth, provider);
-      console.log("User logged in:", result.user);
+      await loginWithGoogle();
+      console.log("Login successful, redirecting...");
+      history.push("/topicos"); 
     } catch (error) {
-      console.error("Error during Google login:", error);
+      console.error("Error during Google login:", error); 
     }
   };
 

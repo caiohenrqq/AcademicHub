@@ -10,6 +10,9 @@ export default defineConfig({
     react(),
     legacy()
   ],
+  build: {
+    sourcemap: true, // Ensure sourcemaps are enabled for build
+  },
   test: {
     globals: true,
     environment: 'jsdom',

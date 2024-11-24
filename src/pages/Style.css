@@ -260,11 +260,15 @@ ion-footer {
   align-items: center;  
 }
 
-.right {
+.topic-name p {
   display: flex;
-  justify-content: right; 
+  justify-content: space-between;
+  align-items: center; /* Optional: centers content vertically */
 }
 
+.right {
+  margin-left: auto; /* Pushes this span to the right */
+}
 
 
 

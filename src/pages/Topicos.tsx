@@ -13,7 +13,6 @@ import {
   IonText,
   IonButton,
   IonInput,
-  IonModal,
 } from "@ionic/react";
 import { database } from "../firebase";
 import {
@@ -35,8 +34,10 @@ const Topicos = () => {
   const { logout } = useUser();
   const history = useHistory();
 
-  const [showModal, setShowModal] = useState(false); // State for modal visibility
-  const [newTopicName, setNewTopicName] = useState(""); // State for new topic name
+  const [newTopicDescription, setNewTopicDescription] = useState("");
+  const [newTopicTag, setNewTopicTag] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [newTopicName, setNewTopicName] = useState("");
   const [topics, setTopics] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -105,21 +106,35 @@ const Topicos = () => {
   }
 
   const handleCreateTopic = async () => {
-    if (newTopicName.trim()) {
+    if (
+      newTopicName.trim() &&
+      newTopicDescription.trim() &&
+      newTopicTag.trim()
+    ) {
       try {
         // Add new topic to Firestore
         await addDoc(collection(database, "topics"), {
           name: newTopicName,
+          description: newTopicDescription,
+          tag: newTopicTag,
           createdAt: new Date(),
         });
-        setNewTopicName(""); // Clear input field
-        setShowModal(false); // Close the modal
+
+        setNewTopicName("");
+        setNewTopicDescription("");
+        setNewTopicTag("");
+        setShowModal(false); 
+        
+        window.location.reload();
+
         console.log("New topic created!");
       } catch (error) {
         console.error("Error creating topic: ", error);
       }
     } else {
-      console.log("Please provide a valid topic name.");
+      console.log(
+        "Debug: Please provide valid inputs for topic name, description, and tag."
+      );
     }
   };
 
@@ -192,26 +207,44 @@ const Topicos = () => {
             </IonList>
           </section>
           {/* Modal for creating a new topic */}
-          <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
-            <div style={{ padding: "20px" }}>
+          <IonPopover
+            isOpen={showModal}
+            onDidDismiss={() => setShowModal(false)}
+            className="custom-modal"
+          >
+            <IonText>
               <h2>Criar Novo Tópico</h2>
-              <IonInput
-                value={newTopicName}
-                onIonChange={(e) => setNewTopicName(e.detail.value!)}
-                placeholder="Nome do Tópico"
-                clearInput
-              />
-              <IonButton
-                onClick={handleCreateTopic}
-                disabled={!newTopicName.trim()}
-              >
-                Criar Tópico
-              </IonButton>
-              <IonButton onClick={() => setShowModal(false)}>
-                Cancelar
-              </IonButton>
-            </div>
-          </IonModal>
+            </IonText>
+            <IonInput
+              value={newTopicName}
+              onIonChange={(e) => setNewTopicName(e.detail.value!)}
+              placeholder="Nome do Tópico"
+              clearInput
+            />
+            <IonInput
+              value={newTopicDescription}
+              onIonChange={(e) => setNewTopicDescription(e.detail.value!)}
+              placeholder="Descrição do Tópico"
+              clearInput
+            />
+            <IonInput
+              value={newTopicTag}
+              onIonChange={(e) => setNewTopicTag(e.detail.value!)}
+              placeholder="Tag do Tópico"
+              clearInput
+            />
+            <IonButton
+              onClick={handleCreateTopic}
+              disabled={
+                !newTopicName.trim() ||
+                !newTopicDescription.trim() ||
+                !newTopicTag.trim()
+              }
+            >
+              Criar Tópico
+            </IonButton>
+            <IonButton onClick={() => setShowModal(false)}>Cancelar</IonButton>
+          </IonPopover>
         </section>
       </IonContent>
     </IonPage>

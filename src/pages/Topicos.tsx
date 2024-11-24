@@ -12,6 +12,8 @@ import {
   IonList,
   IonText,
   IonButton,
+  IonInput,
+  IonModal,
 } from "@ionic/react";
 import { database } from "../firebase";
 import {
@@ -21,6 +23,7 @@ import {
   orderBy,
   limit,
   Timestamp,
+  addDoc,
 } from "firebase/firestore";
 import "./Style.css";
 import { useUser } from "../UserContext";
@@ -32,8 +35,10 @@ const Topicos = () => {
   const { logout } = useUser();
   const history = useHistory();
 
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const [newTopicName, setNewTopicName] = useState(""); // State for new topic name
   const [topics, setTopics] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
 
   const handleLogout = () => {
     logout();
@@ -99,6 +104,25 @@ const Topicos = () => {
     return <LoadingPopup isOpen={loading} />;
   }
 
+  const handleCreateTopic = async () => {
+    if (newTopicName.trim()) {
+      try {
+        // Add new topic to Firestore
+        await addDoc(collection(database, "topics"), {
+          name: newTopicName,
+          createdAt: new Date(),
+        });
+        setNewTopicName(""); // Clear input field
+        setShowModal(false); // Close the modal
+        console.log("New topic created!");
+      } catch (error) {
+        console.error("Error creating topic: ", error);
+      }
+    } else {
+      console.log("Please provide a valid topic name.");
+    }
+  };
+
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -124,7 +148,7 @@ const Topicos = () => {
               </IonButtons>
               <IonPopover trigger="click-trigger" triggerAction="click">
                 <IonContent class="ion-padding">
-                  <IonButton onClick={() => console.log("Create Topic")}>
+                  <IonButton onClick={() => setShowModal(true)}>
                     Criar
                   </IonButton>
                   <IonButton onClick={handleLogout}>Logout</IonButton>
@@ -167,6 +191,27 @@ const Topicos = () => {
               ))}
             </IonList>
           </section>
+          {/* Modal for creating a new topic */}
+          <IonModal isOpen={showModal} onDidDismiss={() => setShowModal(false)}>
+            <div style={{ padding: "20px" }}>
+              <h2>Criar Novo Tópico</h2>
+              <IonInput
+                value={newTopicName}
+                onIonChange={(e) => setNewTopicName(e.detail.value!)}
+                placeholder="Nome do Tópico"
+                clearInput
+              />
+              <IonButton
+                onClick={handleCreateTopic}
+                disabled={!newTopicName.trim()}
+              >
+                Criar Tópico
+              </IonButton>
+              <IonButton onClick={() => setShowModal(false)}>
+                Cancelar
+              </IonButton>
+            </div>
+          </IonModal>
         </section>
       </IonContent>
     </IonPage>

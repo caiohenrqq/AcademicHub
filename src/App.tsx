@@ -45,49 +45,45 @@ import { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Topicos from "./pages/Topicos";
 import Chat from "./pages/Chat";
+import { UserProvider, useUser } from "../src/UserContext";
 
 import { firebaseApp } from "./firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";;
 
-const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    const auth = getAuth(firebaseApp); // Initialize Firebase Auth
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLoggedIn(true);  // User is logged in
-      } else {
-        setIsLoggedIn(false);  // User is not logged in
-      }
-    });
-
-    // Clean up the listener on component unmount
-    return () => unsubscribe();
-  }, []);
-
+const App: React.FC = () => {
   return (
-<IonApp>
-  <IonReactRouter>
-    <IonSplitPane contentId="main">
-      <IonRouterOutlet id="main">
-        <Switch>
-          <Route path="/" exact>
-            <Redirect to={isLoggedIn ? "/topicos" : "/folder/Login"} />
-          </Route>
-          <Route path="/folder/Login" exact>
-            <Login />
-          </Route>
-          <Route path="/topicos" exact>
-            <Topicos />
-          </Route>
-          <Route path="/chat/:topicId" component={Chat} />
-        </Switch>
-      </IonRouterOutlet>
-    </IonSplitPane>
-  </IonReactRouter>
-</IonApp>
+    <IonApp>
+      <UserProvider> {/* Wrapping the app */}
+        <IonReactRouter>
+          <IonSplitPane contentId="main">
+            <IonRouterOutlet id="main">
+              <Switch>
+                <Route path="/" exact>
+                  <AuthRedirect />
+                </Route>
+                <Route path="/folder/Login" exact>
+                  <Login />
+                </Route>
+                <Route path="/topicos" exact>
+                  <Topicos />
+                </Route>
+                <Route path="/chat/:topicId" component={Chat} />
+              </Switch>
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </IonReactRouter>
+      </UserProvider>
+    </IonApp>
   );
+};
+
+// AuthRedirect handles conditional redirects
+const AuthRedirect: React.FC = () => {
+  const { user, loading } = useUser();
+
+  if (loading) return <div>Loading...</div>; // Show a loader while auth state is being determined
+
+  return <Redirect to={user ? "/topicos" : "/folder/Login"} />;
 };
 
 export default App;

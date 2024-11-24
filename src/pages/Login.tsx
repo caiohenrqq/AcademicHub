@@ -1,25 +1,17 @@
 import { IonButton, IonImg, IonContent, IonPage } from "@ionic/react";
-
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth"
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { firebaseApp } from "../firebase";
-
-import './Style.css';
+import "./Style.css";
 
 const Login = () => {
-  const handleGoogleLogin = async () => {
+    const handleGoogleLogin = async () => {
     console.log("Google login initiated");
     const auth = getAuth(firebaseApp);
     const provider = new GoogleAuthProvider();
 
     try {
       const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      console.log("User logged in:", user);
-
-      if (user) {
-        // Redirect to Topicos after successful login
-        window.location.href = "/topicos";
-      }
+      console.log("User logged in:", result.user);
     } catch (error) {
       console.error("Error during Google login:", error);
     }

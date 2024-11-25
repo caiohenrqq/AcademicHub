@@ -288,8 +288,57 @@ ion-footer {
   font-size: 1.2rem;
 }
 
-
 /* Create Topics */
+
+.custom-modal {
+  --background: var(--cor-background);
+  --width: 90%;
+  --height: auto; 
+  --border-radius: 10px; 
+  --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); 
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-modal .modal-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+
+.custom-modal h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: var(--cor-branco);
+}
+
+.custom-modal ion-input {
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+  --background: var(--cor-branco);
+  color: var(--cor-cinza-claro);
+}
+
+.custom-modal ion-button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.custom-modal ion-button:last-child {
+  color: var(--cor-branco);
+}
+
+.custom-modal ion-button:first-child {
+  color: var(--cor-branco);
+}
+
 
 
 

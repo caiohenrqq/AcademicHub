@@ -13,6 +13,7 @@ import {
   IonText,
   IonButton,
   IonInput,
+  IonModal,
 } from "@ionic/react";
 import { database } from "../firebase";
 import {
@@ -207,44 +208,47 @@ const Topicos = () => {
             </IonList>
           </section>
           {/* Modal for creating a new topic */}
-          <IonPopover
-            isOpen={showModal}
-            onDidDismiss={() => setShowModal(false)}
-            className="custom-modal"
-          >
-            <IonText>
-              <h2>Criar Novo Tópico</h2>
-            </IonText>
-            <IonInput
-              value={newTopicName}
-              onIonChange={(e) => setNewTopicName(e.detail.value!)}
-              placeholder="Nome do Tópico"
-              clearInput
-            />
-            <IonInput
-              value={newTopicDescription}
-              onIonChange={(e) => setNewTopicDescription(e.detail.value!)}
-              placeholder="Descrição do Tópico"
-              clearInput
-            />
-            <IonInput
-              value={newTopicTag}
-              onIonChange={(e) => setNewTopicTag(e.detail.value!)}
-              placeholder="Tag do Tópico"
-              clearInput
-            />
-            <IonButton
-              onClick={handleCreateTopic}
-              disabled={
-                !newTopicName.trim() ||
-                !newTopicDescription.trim() ||
-                !newTopicTag.trim()
-              }
-            >
-              Criar Tópico
-            </IonButton>
-            <IonButton onClick={() => setShowModal(false)}>Cancelar</IonButton>
-          </IonPopover>
+          <IonModal
+  isOpen={showModal}
+  onDidDismiss={() => setShowModal(false)}
+  className="custom-modal"
+>
+  <div className="modal-content">
+    <IonText>
+      <h2>Criar Novo Tópico</h2>
+    </IonText>
+    <IonInput
+      value={newTopicName}
+      onIonChange={(e) => setNewTopicName(e.detail.value!)}
+      placeholder="Nome do Tópico"
+      clearInput
+    />
+    <IonInput
+      value={newTopicDescription}
+      onIonChange={(e) => setNewTopicDescription(e.detail.value!)}
+      placeholder="Descrição do Tópico"
+      clearInput
+    />
+    <IonInput
+      value={newTopicTag}
+      onIonChange={(e) => setNewTopicTag(e.detail.value!)}
+      placeholder="Tag do Tópico"
+      clearInput
+    />
+    <IonButton
+      onClick={handleCreateTopic}
+      disabled={
+        !newTopicName.trim() ||
+        !newTopicDescription.trim() ||
+        !newTopicTag.trim()
+      }
+    >
+      Criar Tópico
+    </IonButton>
+    <IonButton onClick={() => setShowModal(false)}>Cancelar</IonButton>
+  </div>
+</IonModal>
+
         </section>
       </IonContent>
     </IonPage>

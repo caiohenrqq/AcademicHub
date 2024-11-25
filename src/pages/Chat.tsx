@@ -103,11 +103,12 @@ const Chat: React.FC = () => {
         <div className="messages">
           {messages.map((msg) => (
             <div
-              key={msg.id}
-              className={`message ${msg.sender === currentUser?.displayName ? "message-sent" : "message-received"}`}
-            >
-              {msg.text}
-            </div>
+  key={msg.id}
+  className={`message ${msg.sender === currentUser?.displayName ? "message-sent" : "message-received"}`}
+>
+  {msg.sender}: {msg.text}
+</div>
+
           ))}
         </div>
       </IonContent>

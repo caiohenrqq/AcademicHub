@@ -169,6 +169,9 @@ ion-title {
   margin-bottom: 1rem;
 }
 
+.sizeofmessage {
+  font-size: 12px !important;
+}
 
 /* Ensure IonButtons stay left */
 ion-buttons {

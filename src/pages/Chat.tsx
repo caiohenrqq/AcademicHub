@@ -14,17 +14,27 @@ import {
 import { paperPlane, arrowBack } from "ionicons/icons";
 import "./Style.css";
 import { useParams } from "react-router-dom";
-import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { database } from "../firebase";
 import { getAuth } from "firebase/auth";
 import LoadingPopup from "../Loading";
 
-const Chat: React.FC = () => {  
+const Chat: React.FC = () => {
   const { topicId } = useParams<{ topicId: string }>();
   const [topicName, setTopicName] = useState<string | null>(null);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<{ id: string; text: string; sender: string; timestamp: any }[]>([]);
-  const [loading, setLoading] = useState(true); 
+  const [messages, setMessages] = useState<
+    { id: string; text: string; sender: string; timestamp: any }[]
+  >([]);
+  const [loading, setLoading] = useState(true);
 
   // Fetch topic name based on topicId
   useEffect(() => {
@@ -77,7 +87,7 @@ const Chat: React.FC = () => {
         sender: currentUser.displayName,
         timestamp: new Date(),
       });
-      setMessage(""); 
+      setMessage("");
     } else {
       console.log("User not authenticated or message is empty");
     }
@@ -103,12 +113,15 @@ const Chat: React.FC = () => {
         <div className="messages">
           {messages.map((msg) => (
             <div
-  key={msg.id}
-  className={`message ${msg.sender === currentUser?.displayName ? "message-sent" : "message-received"}`}
->
-  {msg.sender}: {msg.text}
-</div>
-
+              key={msg.id}
+              className={`message ${
+                msg.sender === currentUser?.displayName
+                  ? "message-sent"
+                  : "message-received"
+              }`}
+            >
+              {msg.sender}: {msg.text}
+            </div>
           ))}
         </div>
       </IonContent>

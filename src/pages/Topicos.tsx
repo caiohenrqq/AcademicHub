@@ -200,7 +200,7 @@ const Topicos = () => {
                           ? `: ${topic.lastMessage}`
                           : "Nenhuma mensagem."}
                       </IonText>
-                      <span className="right">{topic.lastMessageTime}</span>
+                      <span className="right sizeofmessage">{topic.lastMessageTime}</span>
                     </p>
                   </IonLabel>
                 </IonItem>

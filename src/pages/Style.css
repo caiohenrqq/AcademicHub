@@ -325,9 +325,10 @@ ion-footer {
 
 .custom-modal ion-button {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 0.5vh;
   padding: 10px;
-  border-radius: 5px;
+  margin-left: 6vh;
+  --border-radius: 50px;
   font-size: 16px;
 }
 

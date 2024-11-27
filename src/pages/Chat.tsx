@@ -36,7 +36,6 @@ const Chat: React.FC = () => {
   >([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch topic name based on topicId
   useEffect(() => {
     const fetchTopicName = async () => {
       try {
@@ -52,7 +51,7 @@ const Chat: React.FC = () => {
         console.error("Error fetching topic name:", error);
         setTopicName("Error Loading Topic");
       } finally {
-        setLoading(false); // Set loading to false once the data is fetched
+        setLoading(false); 
       }
     };
 
@@ -132,7 +131,7 @@ const Chat: React.FC = () => {
           <IonInput
             value={message}
             onIonChange={(e) => setMessage(e.detail.value!)}
-            placeholder="Type a message..."
+            placeholder="Escreva sua mensagem..."
             className="input"
             clearInput={true}
           />

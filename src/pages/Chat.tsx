@@ -76,8 +76,8 @@ const Chat: React.FC = () => {
   }, [topicId]);
 
   const handleSendMessage = async () => {
-    const auth = getAuth(); // Get the Firebase authentication object
-    const currentUser = auth.currentUser; // Get the currently authenticated user
+    const auth = getAuth(); 
+    const currentUser = auth.currentUser; 
 
     if (currentUser && message.trim()) {
       const messagesPath = collection(database, `topics/${topicId}/messages`);
@@ -92,8 +92,8 @@ const Chat: React.FC = () => {
     }
   };
 
-  const auth = getAuth(); // Get the Firebase authentication object
-  const currentUser = auth.currentUser; // Get the currently authenticated user
+  const auth = getAuth(); 
+  const currentUser = auth.currentUser;
 
   return (
     <div className="chat-view">
@@ -104,7 +104,7 @@ const Chat: React.FC = () => {
             <IonIcon icon={arrowBack} />
           </IonButton>
         </IonButtons>
-        <IonTitle>{loading ? "Loading..." : topicName}</IonTitle>
+        <IonTitle>{loading ? "Carregado..." : topicName}</IonTitle>
       </IonHeader>
 
       {/* Chat Content */}

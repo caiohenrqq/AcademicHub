@@ -13,12 +13,19 @@ ion-content {
 }
 
 .login-section {
-  margin-top: 5vh;
+  margin-top: 9vh;
   gap: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.placeholder-name {
+  background: var(--cor-branco);
+  width: 90%;
+  margin-left: 2.3rem;
+  border-radius: 50px;
 }
 
 .login-inputs {
@@ -297,6 +304,30 @@ ion-footer {
   align-items: center;
 }
 
+#ion-input-3 {
+  margin-left: 1.5rem;
+}
+
+#ion-input-4 {
+  margin-left: 1.5rem;
+}
+
+#ion-input-5 {
+  margin-left: 1.5rem;
+}
+
+#ion-input-6 {
+  margin-left: 1.5rem;
+}
+
+#ion-input-7 {
+  margin-left: 1.5rem;
+}
+
+#ion-input-8 {
+  margin-left: 1.5rem;
+}
+
 .custom-modal .modal-content {
   padding: 20px;
   display: flex;
@@ -323,7 +354,6 @@ ion-footer {
 .custom-modal ion-button {
   width: 100%;
   margin-top: 0.5vh;
-  padding: 10px;
   margin-left: 6vh;
   --border-radius: 50px;
   font-size: 16px;

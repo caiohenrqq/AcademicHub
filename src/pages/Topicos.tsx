@@ -162,6 +162,9 @@ const Topicos = () => {
               </IonButtons>
               <IonPopover trigger="click-trigger" triggerAction="click">
                 <IonContent className="ion-padding">
+                  <IonButton onClick={() => setShowModal(true)}>
+                    Criar
+                  </IonButton>
                   <IonButton onClick={handleLogout}>Logout</IonButton>
                 </IonContent>
               </IonPopover>

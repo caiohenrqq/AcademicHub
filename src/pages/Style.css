@@ -358,7 +358,7 @@ ion-footer {
 
 .dropdown-content {
   position: absolute;
-  top: 100%;
+  top: 90%;
   left: 0;
   right: 0;
   background-color: #f9f9f9;
@@ -393,6 +393,14 @@ ion-footer {
 .dropdown-content .ion-item:hover {
   background-color: #f1f1f1;
 }
+
+.result-topic {
+  font-size: 15px;
+  margin: 1rem;
+  margin-top: 2rem;
+  color: var(--cor-cinza-escuro);
+}
+
 
 
 

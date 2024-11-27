@@ -56,7 +56,7 @@ const SearchBar: React.FC = () => {
           <IonList className="dropdown-content">
             {results.map((result) => (
               <IonItem key={result.id} button>
-                <Link to={`/chat/${result.id}`}>{result.name}</Link>
+                <Link className="result-topic" to={`/chat/${result.id}`}>{result.name}</Link>
               </IonItem>
             ))}
           </IonList>

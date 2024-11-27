@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { getAuth, onAuthStateChanged, User, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, onAuthStateChanged, User, GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup } from "firebase/auth";
 import { firebaseApp } from "../src/firebase";
+import { Browser } from "@capacitor/browser";
 
 interface UserContextProps {
   user: User | null;
@@ -13,51 +14,73 @@ interface UserProviderProps {
   children: ReactNode;
 }
 
+
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-
+  
   const auth = getAuth(firebaseApp);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("Auth state changed:", currentUser);
       setUser(currentUser);
       setLoading(false);
     });
 
+    // Obter o resultado do redirect
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) {
+          setUser(result.user);
+        }
+      })
+      .catch((error) => {
+        console.error("Error getting redirect result:", error);
+      });
+
     return () => unsubscribe();
   }, [auth]);
 
-  const loginWithGoogle = async () => {
-    const provider = new GoogleAuthProvider();
-    try {
-      console.log("Attempting Google sign-in...");
-      const result = await signInWithPopup(auth, provider);
-      console.log("Google sign-in successful:", result.user);
-      setUser(result.user); // Make sure to update user context
-    } catch (error) {
-      if (error instanceof Error) {
-        console.error("Error during Google login:", error.message);
-        alert("Login failed: " + error.message); // Notify the user about the failure
-      } else {
-        console.error("Unknown error during Google login:", error);
-        alert("Login failed: Unknown error occurred.");
+  useEffect(() => {
+    const fetchRedirectResult = async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (result) {
+          console.log("Redirect result:", result.user);
+          setUser(result.user);
+        }
+      } catch (error) {
+        console.error("Error handling redirect result:", error);
       }
+      setLoading(false);
+    };
+  
+    fetchRedirectResult();
+  }, [auth]);
+
+const loginWithGoogle = async () => {
+  const provider = new GoogleAuthProvider();
+  try {
+    const result = await signInWithPopup(auth, provider); // Use signInWithPopup
+    setUser(result.user); // Atualiza o usuário no contexto
+    console.log("Usuário logado com sucesso:", result.user);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error("Erro no login com Google:", error.message);
+      alert("Falha no login: " + error.message); // Alerta ao usuário
+    } else {
+      console.error("Erro desconhecido:", error);
+      alert("Falha no login: erro desconhecido.");
     }
-  };
+  }
+};
 
   const logout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("User logged out");
-        setUser(null);
-      })
-      .catch((error) => {
-        console.error("Error during logout:", error);
-      });
+    auth.signOut()
+      .then(() => setUser(null))
+      .catch((error) => console.error("Error during logout:", error));
   };
 
   return (

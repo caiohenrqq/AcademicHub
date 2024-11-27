@@ -11,6 +11,7 @@ export default defineConfig({
     legacy()
   ],
   build: {
+    chunkSizeWarningLimit: 5000,
     sourcemap: true, // Ensure sourcemaps are enabled for build
   },
   test: {

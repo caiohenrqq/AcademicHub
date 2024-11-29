@@ -160,8 +160,8 @@ const Topicos = () => {
                   autoHide={false}
                 />
               </IonButtons>
-              <IonPopover trigger="click-trigger" triggerAction="click">
-                <IonContent className="ion-padding">
+              <IonPopover className="ion-popover" trigger="click-trigger" triggerAction="click">
+                <IonContent>
                   <IonButton onClick={() => setShowModal(true)}>
                     Criar
                   </IonButton>

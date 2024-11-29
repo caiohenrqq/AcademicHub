@@ -431,6 +431,46 @@ ion-footer {
   color: var(--cor-cinza-escuro);
 }
 
+/* Mobile View Force */
+
+.mobile-wrapper {
+  margin-top: 1rem !importa'nt;
+  width: 450px;
+  height: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 36px;  
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.mobile-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+body, html {
+  background-color: var(--cor-branco);
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center;  
+}
+
+@media (max-width: 768px) {
+  .mobile-wrapper {
+    margin-top: 0rem !important;
+    border-radius: 0px; 
+    width: 412px;
+    height: 905px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 1);
+    position: relative;
+    overflow: hidden;  
+  }
+}
+
 
 
 

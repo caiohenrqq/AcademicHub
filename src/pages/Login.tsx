@@ -1,4 +1,3 @@
-import React from "react";
 import { IonButton, IonImg, IonContent, IonPage } from "@ionic/react";
 import { useUser } from "../UserContext";
 import { useHistory } from "react-router-dom";

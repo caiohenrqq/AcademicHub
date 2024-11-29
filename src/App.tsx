@@ -52,30 +52,32 @@ const AuthRedirect: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <IonApp>
-      <UserProvider>
-        <IonReactRouter>
-          <IonSplitPane contentId="main">
-            <IonRouterOutlet id="main">
-              <Switch>
-                <Route path="/" exact>
-                  <AuthRedirect />
-                </Route>
-                <Route path="/folder/Login" exact>
-                  <Login />
-                </Route>
-                <ProtectedRoute
-                  path="/topicos"
-                  exact
-                  render={(props) => <Topicos {...props} />}
-                />
-                <Route path="/chat/:topicId" component={Chat} />
-              </Switch>
-            </IonRouterOutlet>
-          </IonSplitPane>
-        </IonReactRouter>
-      </UserProvider>
-    </IonApp>
+    <div className="mobile-wrapper">
+      <IonApp>
+        <UserProvider>
+          <IonReactRouter>
+            <IonSplitPane contentId="main">
+              <IonRouterOutlet id="main">
+                <Switch>
+                  <Route path="/" exact>
+                    <AuthRedirect />
+                  </Route>
+                  <Route path="/folder/Login" exact>
+                    <Login />
+                  </Route>
+                  <ProtectedRoute
+                    path="/topicos"
+                    exact
+                    render={(props) => <Topicos {...props} />}
+                  />
+                  <Route path="/chat/:topicId" component={Chat} />
+                </Switch>
+              </IonRouterOutlet>
+            </IonSplitPane>
+          </IonReactRouter>
+        </UserProvider>
+      </IonApp>
+    </div>
   );
 };
 

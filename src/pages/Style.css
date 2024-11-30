@@ -448,16 +448,20 @@ body, html {
 }
 
 @media only screen and (max-width: 768px) {
+  body {
+    min-height: 100dvh; 
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+  
   .mobile-wrapper {
-    margin-top: 0rem !important;
     border-radius: 0px; 
-    width: 100vw; 
-    position: relative;
-    overflow: hidden;  
+    width: 100dvh; 
     border-radius: 0px !important;
   }
+
   .chat-input  {
-    margin-bottom: 7rem;
     background-color: var(--cor-branco);
     border-top: 1px solid var(--cor-branco);
     padding: 10px;
@@ -468,13 +472,14 @@ body, html {
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 10;
+    margin-bottom: 0rem !important;
   }
 
   .container-pesquisar { 
     width: 80%;
     margin-left: 1rem;
   }
+
   .loading-container {
     height: 88%;
   }

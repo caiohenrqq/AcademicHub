@@ -14,7 +14,15 @@ import {
 import { paperPlane, arrowBack } from "ionicons/icons";
 import "./Style.css";
 import { useParams } from "react-router-dom";
-import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  onSnapshot,
+  query,
+  orderBy,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { database } from "../firebase";
 import { getAuth } from "firebase/auth";
 import LoadingPopup from "../Loading";
@@ -121,23 +129,23 @@ const Chat: React.FC = () => {
             </div>
           ))}
         </div>
+        <IonItem className="chat-input">
+          <div className="message-input-container">
+            <IonInput
+              value={message}
+              onIonChange={(e) => setMessage(e.detail.value!)}
+              placeholder="Escreva sua mensagem..."
+              className="input"
+              clearInput={true}
+            />
+            <IonFabButton onClick={handleSendMessage}>
+              <IonIcon icon={paperPlane} />
+            </IonFabButton>
+          </div>
+        </IonItem>
       </IonContent>
 
       {/* Message Input */}
-      <IonItem className="chat-input">
-        <div className="message-input-container">
-          <IonInput
-            value={message}
-            onIonChange={(e) => setMessage(e.detail.value!)}
-            placeholder="Escreva sua mensagem..."
-            className="input"
-            clearInput={true}
-          />
-          <IonFabButton onClick={handleSendMessage}>
-            <IonIcon icon={paperPlane} />
-          </IonFabButton>
-        </div>
-      </IonItem>
 
       {/* Loading Popup */}
       <LoadingPopup isOpen={loading} />

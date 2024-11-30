@@ -7,7 +7,7 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -46,7 +46,7 @@ import Topicos from "./pages/Topicos";
 import Chat from "./pages/Chat";
 import { UserProvider, useUser } from "../src/UserContext";
 import ProtectedRoute from "./ProtectedRoute";
-import "./pages/Style.css"; 
+import "./pages/Style.css";
 
 const AuthRedirect: React.FC = () => {
   const { user } = useUser();
@@ -64,18 +64,20 @@ const App: React.FC = () => {
                 <Switch>
                   <Route path="/" exact>
                     <AuthRedirect />
+                    <SpeedInsights />
                   </Route>
                   <Route path="/folder/Login" exact>
                     <Login />
+                    <SpeedInsights />
                   </Route>
                   <ProtectedRoute
                     path="/topicos"
                     exact
                     render={(props) => <Topicos {...props} />}
                   />
+                  <SpeedInsights />
                   <Route path="/chat/:topicId" component={Chat} />
                 </Switch>
-                <SpeedInsights/>
               </IonRouterOutlet>
             </IonSplitPane>
           </IonReactRouter>

@@ -38,7 +38,7 @@
     "react-native-safe-area-context": "^4.14.0",
     "react-native-screens": "^4.2.0",
     "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@capacitor/cli": "6.1.2",

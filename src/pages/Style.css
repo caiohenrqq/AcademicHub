@@ -263,7 +263,6 @@ ion-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 9rem; 
   overflow: auto;
 }
 
@@ -495,6 +494,11 @@ body, html {
     --offset-x: -870px !important;
     --offset-y: -50px !important;
   }
+
+  ion-footer {
+    padding-bottom: 9rem;
+  }
+  
 }
 
 

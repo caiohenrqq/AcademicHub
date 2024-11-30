@@ -58,7 +58,6 @@ const App: React.FC = () => {
     <div className="mobile-wrapper">
       <IonApp>
         <UserProvider>
-        <SpeedInsights/>
           <IonReactRouter>
             <IonSplitPane contentId="main">
               <IonRouterOutlet id="main">
@@ -76,6 +75,7 @@ const App: React.FC = () => {
                   />
                   <Route path="/chat/:topicId" component={Chat} />
                 </Switch>
+                <SpeedInsights/>
               </IonRouterOutlet>
             </IonSplitPane>
           </IonReactRouter>

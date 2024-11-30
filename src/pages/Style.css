@@ -448,12 +448,6 @@ body, html {
 }
 
 @media only screen and (max-width: 768px) {
-  body {
-    min-height: calc(100vh - 60px); /* Ajuste conforme necessário */
-    display: flex;
-    flex-direction: column;
-    overflow: auto;
-  }
   .mobile-wrapper {
     margin-top: 0rem !important;
     border-radius: 0px; 
@@ -475,9 +469,8 @@ body, html {
     left: 0;
     width: 100%;
     z-index: 10;
-    padding-bottom: env(safe-area-inset-bottom); /* Ajusta a área segura */
-    transition: bottom 0.3s ease-out; /* Para uma animação suave */
   }
+
   .container-pesquisar { 
     width: 80%;
     margin-left: 1rem;
@@ -502,10 +495,9 @@ body, html {
     transform: translate(-50%, -50%);
   }
   
-  .ion-popover {
+  .input {
     --offset-x: -120px !important;
     --offset-y: -50px !important;
-
   }
 
   .chat-input  {

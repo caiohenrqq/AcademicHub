@@ -64,13 +64,10 @@ const App: React.FC = () => {
                 <Switch>
                   <Route path="/" exact>
                     <AuthRedirect />
-                    <SpeedInsights />
                   </Route>
                   <Route path="/folder/Login" exact>
                     <Login />
-                    <SpeedInsights />
                   </Route>
-                  <SpeedInsights/>
                   <ProtectedRoute
                     path="/topicos"
                     exact
@@ -78,6 +75,7 @@ const App: React.FC = () => {
                   />
                   <Route path="/chat/:topicId" component={Chat} />
                 </Switch>
+                <SpeedInsights />
               </IonRouterOutlet>
             </IonSplitPane>
           </IonReactRouter>

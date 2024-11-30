@@ -44,6 +44,7 @@ import Topicos from "./pages/Topicos";
 import Chat from "./pages/Chat";
 import { UserProvider, useUser } from "../src/UserContext";
 import ProtectedRoute from "./ProtectedRoute";
+import "./pages/Style.css"; 
 
 const AuthRedirect: React.FC = () => {
   const { user } = useUser();

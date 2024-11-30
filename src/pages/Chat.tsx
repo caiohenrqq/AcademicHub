@@ -9,6 +9,7 @@ import {
   IonFooter,
   IonInput,
   IonFabButton,
+  IonItem,
 } from "@ionic/react";
 import { paperPlane, arrowBack } from "ionicons/icons";
 import "./Style.css";
@@ -123,7 +124,7 @@ const Chat: React.FC = () => {
       </IonContent>
 
       {/* Message Input */}
-      <IonFooter>
+      <IonItem className="chat-input">
         <div className="message-input-container">
           <IonInput
             value={message}
@@ -136,7 +137,7 @@ const Chat: React.FC = () => {
             <IonIcon icon={paperPlane} />
           </IonFabButton>
         </div>
-      </IonFooter>
+      </IonItem>
 
       {/* Loading Popup */}
       <LoadingPopup isOpen={loading} />

@@ -256,7 +256,7 @@ ion-fab-button {
 }
 
 /* Footer */
-ion-footer {
+.chat-input {
   background-color: var(--cor-branco);
   border-top: 1px solid var(--cor-branco);
   padding: 10px;
@@ -264,28 +264,8 @@ ion-footer {
   justify-content: space-between;
   align-items: center;
   overflow: auto;
-  position: fixed; /* Fixa o footer na parte inferior */
-  bottom: 0; /* Garante que ele fique na parte inferior da tela */
-  left: 0;
-  width: 100%;
-  z-index: 10; /* Garante que o footer esteja acima de outros elementos */
-  padding-bottom: env(safe-area-inset-bottom);
 }
 
-.message-input-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.input {
-  width: 85%;
-  margin-right: 10px;
-}
-
-.IonFabButton {
-  width: 10%;
-}
 .center {
   display: flex;
   justify-content: center;
@@ -476,19 +456,19 @@ body, html {
     overflow: hidden;  
     border-radius: 0px !important;
   }
-
+  .chat-input  {
+    margin-bottom: 10rem;
+  }
   .container-pesquisar { 
     width: 80%;
     margin-left: 1rem;
   }
-
   .loading-container {
     height: 88%;
   }
-  
 }
 
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 1000px) {
   ion-item:hover, 
   ion-card:hover,
   ion-chip:hover {
@@ -509,8 +489,8 @@ body, html {
 
   }
 
-  ion-footer {
-    padding-bottom: 9rem;
+  .chat-input  {
+    padding-bottom: 8rem;
   }
 }
 

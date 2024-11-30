@@ -160,7 +160,11 @@ const Topicos = () => {
                   autoHide={false}
                 />
               </IonButtons>
-              <IonPopover className="ion-popover" trigger="click-trigger" triggerAction="click">
+              <IonPopover
+                className="ion-popover"
+                trigger="click-trigger"
+                triggerAction="click"
+              >
                 <IonContent>
                   <IonButton onClick={() => setShowModal(true)}>
                     Criar
@@ -190,12 +194,16 @@ const Topicos = () => {
                   routerLink={`/chat/${topic.id}`}
                 >
                   <IonLabel>
-                    <h2 className="topic-name-title">{topic.name}</h2>
+                    <h2 className="topic-name-title">
+                      <strong>{topic.name}</strong>
+                    </h2>
                     <p>
                       <IonText className="topic-message">
                         <strong>{topic.lastUser}</strong>
                         {topic.lastMessage
-                          ? `: ${topic.lastMessage}`
+                          ? `: ${topic.lastMessage.substring(0, 40)}${
+                              topic.lastMessage.length > 35 ? "..." : ""
+                            }`
                           : "Nenhuma mensagem."}
                       </IonText>
                       <span className="right sizeofmessage">

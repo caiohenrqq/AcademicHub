@@ -78,11 +78,11 @@ const Chat: React.FC = () => {
   }, [topicId]);
 
   useEffect(() => {
-    if (contentRef.current) {
-      // Rolando até o final do chat sempre que as mensagens mudam
+    if (contentRef.current !== null) {
       contentRef.current.scrollToBottom(0);
     }
-  }, [messages]); // Quando as mensagens mudam, chama a função de rolar
+  }, [messages]);
+  
 
   const handleSendMessage = async () => {
     const auth = getAuth();
@@ -115,40 +115,39 @@ const Chat: React.FC = () => {
 
       {/* Chat Content */}
       <IonContent className="chat-content" ref={contentRef}>
-        <div className="messages">
-          {messages.map((msg) => (
-            <div
-              key={msg.id}
-              className={`message ${
-                msg.sender === getAuth().currentUser?.displayName
-                  ? "message-sent"
-                  : "message-received"
-              }`}
-            >
-              {<strong>{msg.sender}</strong>}: {msg.text}
-            </div>
-          ))}
-        </div>
-        <IonItem className="chat-input">
-          <div className="message-input-container">
-            <IonInput
-              value={message}
-              onIonChange={(e) => setMessage(e.detail.value!)}
-              placeholder="Escreva sua mensagem..."
-              className="input"
-              clearInput={true}
-            />
-            <IonFabButton onClick={handleSendMessage}>
-              <IonIcon icon={paperPlane} />
-            </IonFabButton>
+        <div className="chat-container">
+          <div className="messages">
+            {messages.map((msg) => (
+              <div
+                key={msg.id}
+                className={`message ${
+                  msg.sender === getAuth().currentUser?.displayName
+                    ? "message-sent"
+                    : "message-received"
+                }`}
+              >
+                {<strong>{msg.sender}</strong>}: {msg.text}
+              </div>
+            ))}
           </div>
-        </IonItem>
+
+          <IonItem className="chat-input">
+            <div className="message-input-container">
+              <IonInput
+                value={message}
+                onIonChange={(e) => setMessage(e.detail.value!)}
+                placeholder="Escreva sua mensagem..."
+                className="input"
+                clearInput={true}
+              />
+              <IonFabButton onClick={handleSendMessage}>
+                <IonIcon icon={paperPlane} />
+              </IonFabButton>
+            </div>
+          </IonItem>
+        </div>
+        <LoadingPopup isOpen={loading} />
       </IonContent>
-
-      {/* Message Input */}
-
-      {/* Loading Popup */}
-      <LoadingPopup isOpen={loading} />
     </div>
   );
 };

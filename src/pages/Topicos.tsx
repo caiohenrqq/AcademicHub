@@ -221,18 +221,21 @@ const Topicos = () => {
                 value={newTopicName}
                 onIonChange={(e) => setNewTopicName(e.detail.value!)}
                 placeholder="Nome do Tópico"
+                className="topic-name-model"
                 clearInput
               />
               <IonInput
                 value={newTopicDescription}
                 onIonChange={(e) => setNewTopicDescription(e.detail.value!)}
                 placeholder="Descrição do Tópico"
+                className="topic-desc-model"
                 clearInput
               />
               <IonInput
                 value={newTopicTag}
                 onIonChange={(e) => setNewTopicTag(e.detail.value!)}
                 placeholder="Tag do Tópico"
+                className="topic-tag-model"
                 clearInput
               />
               <IonButton

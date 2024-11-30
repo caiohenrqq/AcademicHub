@@ -7,6 +7,8 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { Redirect, Route, Switch } from "react-router-dom";
 
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -56,6 +58,7 @@ const App: React.FC = () => {
     <div className="mobile-wrapper">
       <IonApp>
         <UserProvider>
+        <SpeedInsights/>
           <IonReactRouter>
             <IonSplitPane contentId="main">
               <IonRouterOutlet id="main">

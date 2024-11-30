@@ -448,6 +448,12 @@ body, html {
 }
 
 @media only screen and (max-width: 768px) {
+  body {
+    min-height: calc(100vh - 60px); /* Ajuste conforme necessário */
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+  }
   .mobile-wrapper {
     margin-top: 0rem !important;
     border-radius: 0px; 
@@ -457,7 +463,20 @@ body, html {
     border-radius: 0px !important;
   }
   .chat-input  {
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
+    background-color: var(--cor-branco);
+    border-top: 1px solid var(--cor-branco);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding-bottom: env(safe-area-inset-bottom); /* Ajusta a área segura */
+    transition: bottom 0.3s ease-out; /* Para uma animação suave */
   }
   .container-pesquisar { 
     width: 80%;

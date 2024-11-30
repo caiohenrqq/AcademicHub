@@ -473,6 +473,12 @@ body, html {
     width: 100vw; 
     position: relative;
     overflow: hidden;  
+    border-radius: 0px !important;
+  }
+
+  .container-pesquisar { 
+    width: 80%;
+    margin-left: 1rem;
   }
 }
 

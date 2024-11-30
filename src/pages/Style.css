@@ -106,11 +106,6 @@ ion-button ion-icon {
   height: 100%;
 }
 
-ion-item:hover, 
-ion-card:hover,
-ion-chip:hover {
-  pointer-events: none !important;
-}
 .pesquisar {
   height: 30%;
   background-color: var(--cor-background);

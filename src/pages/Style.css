@@ -447,7 +447,7 @@ body, html {
   display: block;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .mobile-wrapper {
     margin-top: 0rem !important;
     border-radius: 0px; 
@@ -464,6 +464,12 @@ body, html {
 }
 
 @media (min-width: 900px) {
+  ion-item:hover, 
+  ion-card:hover,
+  ion-chip:hover {
+    pointer-events: none !important;
+  }
+
   .mobile-wrapper {
     margin-top: -1rem !important;
     position: absolute;
@@ -473,16 +479,15 @@ body, html {
   }
   
   .ion-popover {
-    --offset-x: -870px !important;
+    --offset-x: -120px !important;
     --offset-y: -50px !important;
+
   }
 
   ion-footer {
-    padding-bottom: 9rem;
+    padding-bottom: 12rem;
   }
-  
 }
-
 
 
 

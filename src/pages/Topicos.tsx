@@ -174,7 +174,7 @@ const Topicos = () => {
           <section className="chats-section">
             {user ? (
               <IonText className="topic-name center">
-                <h2>Olá, {user.displayName || user.email}!</h2>
+                <h2>Olá, {user.displayName}!</h2>
               </IonText>
             ) : (
               <IonText>
@@ -190,7 +190,7 @@ const Topicos = () => {
                   routerLink={`/chat/${topic.id}`}
                 >
                   <IonLabel>
-                    <h2>{topic.name}</h2>
+                    <h2 className="topic-name-title">{topic.name}</h2>
                     <p>
                       <IonText className="topic-message">
                         <strong>{topic.lastUser}</strong>

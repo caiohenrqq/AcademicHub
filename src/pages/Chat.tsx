@@ -116,7 +116,7 @@ const Chat: React.FC = () => {
                   : "message-received"
               }`}
             >
-              {msg.sender}: {msg.text}
+              {<strong>{msg.sender}</strong>}: {msg.text}
             </div>
           ))}
         </div>

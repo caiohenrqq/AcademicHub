@@ -12,6 +12,16 @@ ion-content {
   --background: var(--cor-background);
 }
 
+/* Hide Scroll Bar */
+ion-content::part(scroll) {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+ion-content::part(scroll)::-webkit-scrollbar {
+  display: none;
+}
+
 .login-section {
   margin-top: 9vh;
   gap: 4rem;
@@ -201,6 +211,7 @@ ion-buttons {
   align-self: flex-start;
 }
 
+
 /* Align outgoing messages to the right */
 .message-sent {
   align-self: flex-end;
@@ -252,6 +263,8 @@ ion-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 9rem; 
+  overflow: auto;
 }
 
 .center {
@@ -462,7 +475,7 @@ body, html {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1000px) {
   .mobile-wrapper {
     margin-top: -1rem !important;
     position: absolute;

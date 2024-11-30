@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   IonContent,
   IonHeader,
@@ -9,20 +9,11 @@ import {
   IonFooter,
   IonInput,
   IonFabButton,
-  IonLoading,
 } from "@ionic/react";
 import { paperPlane, arrowBack } from "ionicons/icons";
 import "./Style.css";
 import { useParams } from "react-router-dom";
-import {
-  collection,
-  addDoc,
-  onSnapshot,
-  query,
-  orderBy,
-  doc,
-  getDoc,
-} from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, orderBy, doc, getDoc } from "firebase/firestore";
 import { database } from "../firebase";
 import { getAuth } from "firebase/auth";
 import LoadingPopup from "../Loading";
@@ -35,6 +26,8 @@ const Chat: React.FC = () => {
     { id: string; text: string; sender: string; timestamp: any }[]
   >([]);
   const [loading, setLoading] = useState(true);
+
+  const contentRef = useRef<HTMLIonContentElement>(null);
 
   useEffect(() => {
     const fetchTopicName = async () => {
@@ -51,7 +44,7 @@ const Chat: React.FC = () => {
         console.error("Error fetching topic name:", error);
         setTopicName("Error Loading Topic");
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
@@ -75,9 +68,16 @@ const Chat: React.FC = () => {
     return () => unsubscribe();
   }, [topicId]);
 
+  useEffect(() => {
+    if (contentRef.current) {
+      // Rolando até o final do chat sempre que as mensagens mudam
+      contentRef.current.scrollToBottom(0);
+    }
+  }, [messages]); // Quando as mensagens mudam, chama a função de rolar
+
   const handleSendMessage = async () => {
-    const auth = getAuth(); 
-    const currentUser = auth.currentUser; 
+    const auth = getAuth();
+    const currentUser = auth.currentUser;
 
     if (currentUser && message.trim()) {
       const messagesPath = collection(database, `topics/${topicId}/messages`);
@@ -92,9 +92,6 @@ const Chat: React.FC = () => {
     }
   };
 
-  const auth = getAuth(); 
-  const currentUser = auth.currentUser;
-
   return (
     <div className="chat-view">
       {/* Chat Header */}
@@ -108,13 +105,13 @@ const Chat: React.FC = () => {
       </IonHeader>
 
       {/* Chat Content */}
-      <IonContent className="chat-content">
+      <IonContent className="chat-content" ref={contentRef}>
         <div className="messages">
           {messages.map((msg) => (
             <div
               key={msg.id}
               className={`message ${
-                msg.sender === currentUser?.displayName
+                msg.sender === getAuth().currentUser?.displayName
                   ? "message-sent"
                   : "message-received"
               }`}

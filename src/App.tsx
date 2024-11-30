@@ -70,12 +70,12 @@ const App: React.FC = () => {
                     <Login />
                     <SpeedInsights />
                   </Route>
+                  <SpeedInsights/>
                   <ProtectedRoute
                     path="/topicos"
                     exact
                     render={(props) => <Topicos {...props} />}
                   />
-                  <SpeedInsights />
                   <Route path="/chat/:topicId" component={Chat} />
                 </Switch>
               </IonRouterOutlet>

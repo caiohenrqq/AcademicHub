@@ -26,6 +26,7 @@ import {
 import { database } from "../firebase";
 import { getAuth } from "firebase/auth";
 import LoadingPopup from "../Loading";
+import { Keyboard } from "@capacitor/keyboard";
 
 const Chat: React.FC = () => {
   const { topicId } = useParams<{ topicId: string }>();
@@ -37,6 +38,24 @@ const Chat: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const contentRef = useRef<HTMLIonContentElement>(null);
+
+  useEffect(() => {
+    const handleKeyboardShow = () => {
+      document.body.classList.add("keyboard-open");
+    };
+
+    const handleKeyboardHide = () => {
+      document.body.classList.remove("keyboard-open");
+    };
+
+    Keyboard.addListener("keyboardWillShow", handleKeyboardShow);
+    Keyboard.addListener("keyboardWillHide", handleKeyboardHide);
+
+    return () => {
+      Keyboard.removeAllListeners();
+    };
+  }, [])
+
 
   useEffect(() => {
     const fetchTopicName = async () => {

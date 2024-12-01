@@ -482,11 +482,6 @@ body, html {
     background-color: var(--cor-branco);
     border-top: 1px solid var(--cor-branco);
     padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    width: 100%;
   }
 
   .container-pesquisar {  
@@ -496,6 +491,11 @@ body, html {
 
   .loading-container {
     height: 100%;
+  }
+
+  body.keyboard-open {
+    transform: translateY(-200px); 
+    transition: transform 0.3s ease-in-out;
   }
 }
 
@@ -522,8 +522,6 @@ body, html {
   .chat-input  {
     margin-bottom: 8.4rem;
   }
-
-  
 }
 
 

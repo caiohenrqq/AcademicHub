@@ -44,11 +44,19 @@ const Chat: React.FC = () => {
   useEffect(() => {
     if (isPlatform("hybrid")) {
       const handleKeyboardShow = () => {
-        document.body.classList.add("keyboard-open");
+        // Add the class to IonContent when the keyboard shows
+        const content = document.querySelector("ion-content");
+        if (content) {
+          content.classList.add("keyboard-open");
+        }
       };
 
       const handleKeyboardHide = () => {
-        document.body.classList.remove("keyboard-open");
+        // Remove the class from IonContent when the keyboard hides
+        const content = document.querySelector("ion-content");
+        if (content) {
+          content.classList.remove("keyboard-open");
+        }
       };
 
       // Listen for the keyboard show and hide events
@@ -58,7 +66,10 @@ const Chat: React.FC = () => {
       // Listen for the back button press (Android)
       const handleBackButton = () => {
         // This ensures the body is restored when the back button is pressed
-        document.body.classList.remove("keyboard-open");
+        const content = document.querySelector("ion-content");
+        if (content) {
+          content.classList.remove("keyboard-open");
+        }
       };
 
       App.addListener("backButton", handleBackButton);
@@ -66,7 +77,7 @@ const Chat: React.FC = () => {
       // Cleanup listeners on unmount
       return () => {
         Keyboard.removeAllListeners();
-        App.removeAllListeners(); // Use removeAllListeners instead of removeListener
+        App.removeAllListeners();
       };
     } else {
       // Web fallback: The keyboard plugin isn't available, so log a warning (optional)

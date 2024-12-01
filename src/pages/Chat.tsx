@@ -114,7 +114,7 @@ const Chat: React.FC = () => {
       </IonHeader>
 
       {/* Chat Content */}
-      <IonContent className="chat-content" ref={contentRef}>
+      <IonContent overflow-scroll="false" className="chat-content" ref={contentRef}>
         <div className="chat-container">
           <div className="messages">
             {messages.map((msg) => (

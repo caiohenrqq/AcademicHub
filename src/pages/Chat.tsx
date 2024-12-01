@@ -28,6 +28,7 @@ import { database } from "../firebase";
 import { getAuth } from "firebase/auth";
 import LoadingPopup from "../Loading";
 import { Keyboard } from "@capacitor/keyboard";
+import { App } from "@capacitor/app";
 
 const Chat: React.FC = () => {
   const { topicId } = useParams<{ topicId: string }>();
@@ -42,7 +43,6 @@ const Chat: React.FC = () => {
 
   useEffect(() => {
     if (isPlatform("hybrid")) {
-      // Only use Capacitor Keyboard API on hybrid (iOS/Android) platforms
       const handleKeyboardShow = () => {
         document.body.classList.add("keyboard-open");
       };
@@ -51,13 +51,22 @@ const Chat: React.FC = () => {
         document.body.classList.remove("keyboard-open");
       };
 
-      // Listen for keyboard show/hide events
+      // Listen for the keyboard show and hide events
       Keyboard.addListener("keyboardWillShow", handleKeyboardShow);
       Keyboard.addListener("keyboardWillHide", handleKeyboardHide);
+
+      // Listen for the back button press (Android)
+      const handleBackButton = () => {
+        // This ensures the body is restored when the back button is pressed
+        document.body.classList.remove("keyboard-open");
+      };
+
+      App.addListener("backButton", handleBackButton);
 
       // Cleanup listeners on unmount
       return () => {
         Keyboard.removeAllListeners();
+        App.removeAllListeners(); // Use removeAllListeners instead of removeListener
       };
     } else {
       // Web fallback: The keyboard plugin isn't available, so log a warning (optional)

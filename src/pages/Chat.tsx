@@ -128,6 +128,7 @@ const Chat: React.FC = () => {
       contentRef.current.scrollToBottom(0);
     }
   }, [messages]);
+  
 
   const handleSendMessage = async () => {
     const auth = getAuth();
@@ -159,11 +160,7 @@ const Chat: React.FC = () => {
       </IonHeader>
 
       {/* Chat Content */}
-      <IonContent
-        overflow-scroll="false"
-        className="chat-content"
-        ref={contentRef}
-      >
+      <IonContent overflow-scroll="false" className="chat-content" ref={contentRef}>
         <div className="chat-container">
           <div className="messages">
             {messages.map((msg) => (
@@ -178,21 +175,22 @@ const Chat: React.FC = () => {
                 {<strong>{msg.sender}</strong>}: {msg.text}
               </div>
             ))}
-            <IonItem className="chat-input">
-              <div className="message-input-container">
-                <IonInput
-                  value={message}
-                  onIonChange={(e) => setMessage(e.detail.value!)}
-                  placeholder="Escreva sua mensagem..."
-                  className="input"
-                  clearInput={true}
-                />
-                <IonFabButton onClick={handleSendMessage}>
-                  <IonIcon icon={paperPlane} />
-                </IonFabButton>
-              </div>
-            </IonItem>
           </div>
+
+          <IonItem className="chat-input">
+            <div className="message-input-container">
+              <IonInput
+                value={message}
+                onIonChange={(e) => setMessage(e.detail.value!)}
+                placeholder="Escreva sua mensagem..."
+                className="input"
+                clearInput={true}
+              />
+              <IonFabButton onClick={handleSendMessage}>
+                <IonIcon icon={paperPlane} />
+              </IonFabButton>
+            </div>
+          </IonItem>
         </div>
         <LoadingPopup isOpen={loading} />
       </IonContent>

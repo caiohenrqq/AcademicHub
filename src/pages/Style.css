@@ -480,6 +480,8 @@ body, html {
     background-color: var(--cor-branco);
     border-top: 1px solid var(--cor-branco);
     padding: 10px;
+    position: relative;
+    margin-bottom: 8.4rem !important;
   }
 
   .container-pesquisar {  

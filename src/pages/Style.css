@@ -470,6 +470,8 @@ body, html {
     flex-direction: column;
     margin: 0;
   }
+  
+
 
   .pesquisar {
     height: 40%;
@@ -490,7 +492,7 @@ body, html {
     align-items: center;
     position: relative;
     width: 100%;
-    margin-bottom: 0rem !important;
+    margin-bottom: 8rem !important;
   }
 
   .container-pesquisar {  

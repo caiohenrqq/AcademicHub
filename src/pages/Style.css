@@ -270,7 +270,6 @@ ion-fab-button {
 .chat-input {
   background-color: var(--cor-branco);
   border-top: 1px solid var(--cor-branco);
-  padding: 8px !important;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -14,12 +14,12 @@ ion-content {
 
 /* Hide Scroll Bar */
 ion-content::part(scroll) {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
+  -ms-overflow-style: none !important; 
+  scrollbar-width: none !important; 
 }
 
 ion-content::part(scroll)::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 
 .login-section {
@@ -473,6 +473,10 @@ body, html {
     margin: 0;
   }
   
+  .messages {
+    margin-bottom: 5rem !important;
+  }
+
   .pesquisar {
     height: 40%;
   }
@@ -530,6 +534,8 @@ body, html {
   .chat-input  {
     margin-bottom: 8.4rem;
   }
+
+  
 }
 
 

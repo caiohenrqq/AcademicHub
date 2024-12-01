@@ -208,7 +208,6 @@ ion-buttons {
   flex: 1; 
   overflow-y: auto; 
   padding: 16px;
-  padding-bottom: 1rem;
 }
 
 /* Each individual message */
@@ -470,10 +469,6 @@ body, html {
     display: flex;
     flex-direction: column;
     margin: 0;
-  }
-  
-  .messages {
-    margin-bottom: 5rem !important;
   }
 
   .pesquisar {

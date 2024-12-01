@@ -466,8 +466,6 @@ body, html {
     margin: 0;
   }
   
-
-
   .pesquisar {
     height: 40%;
   }
@@ -494,8 +492,9 @@ body, html {
   }
 
   body.keyboard-open {
-    transform: translateY(-200px); 
+    transform: translateY(-200px) !important; 
     transition: transform 0.3s ease-in-out;
+    padding-bottom: 10px !important;
   }
 }
 

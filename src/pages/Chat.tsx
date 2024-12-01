@@ -10,6 +10,7 @@ import {
   IonInput,
   IonFabButton,
   IonItem,
+  isPlatform,
 } from "@ionic/react";
 import { paperPlane, arrowBack } from "ionicons/icons";
 import "./Style.css";
@@ -40,22 +41,29 @@ const Chat: React.FC = () => {
   const contentRef = useRef<HTMLIonContentElement>(null);
 
   useEffect(() => {
-    const handleKeyboardShow = () => {
-      document.body.classList.add("keyboard-open");
-    };
+    if (isPlatform("hybrid")) {
+      // Only use Capacitor Keyboard API on hybrid (iOS/Android) platforms
+      const handleKeyboardShow = () => {
+        document.body.classList.add("keyboard-open");
+      };
 
-    const handleKeyboardHide = () => {
-      document.body.classList.remove("keyboard-open");
-    };
+      const handleKeyboardHide = () => {
+        document.body.classList.remove("keyboard-open");
+      };
 
-    Keyboard.addListener("keyboardWillShow", handleKeyboardShow);
-    Keyboard.addListener("keyboardWillHide", handleKeyboardHide);
+      // Listen for keyboard show/hide events
+      Keyboard.addListener("keyboardWillShow", handleKeyboardShow);
+      Keyboard.addListener("keyboardWillHide", handleKeyboardHide);
 
-    return () => {
-      Keyboard.removeAllListeners();
-    };
-  }, [])
-
+      // Cleanup listeners on unmount
+      return () => {
+        Keyboard.removeAllListeners();
+      };
+    } else {
+      // Web fallback: The keyboard plugin isn't available, so log a warning (optional)
+      console.warn("Keyboard plugin is not available on the web.");
+    }
+  }, []);
 
   useEffect(() => {
     const fetchTopicName = async () => {

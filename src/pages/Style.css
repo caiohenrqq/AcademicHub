@@ -521,8 +521,9 @@ body, html {
     --offset-y: -50px !important;
   }
 
-  .chat-input  {
-    margin-bottom: 8.4rem;
+  .chat-input {
+    margin-bottom: 5.5rem;
+    padding: .5rem;
   }
 }
 

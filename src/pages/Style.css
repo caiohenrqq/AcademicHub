@@ -185,10 +185,11 @@ ion-title {
 ion-buttons {
   margin-left: 0;
 }
-
 .chat-content {
   flex-grow: 1;
-  overflow-y: auto;
+  display: flex; /* Adicionado para ativar o Flexbox */
+  flex-direction: column; /* Garante que os filhos fiquem organizados em coluna */
+  overflow: hidden; /* Evita rolagens indesejadas */
   padding: 10px;
   --background: url(/bg-chat.png) no-repeat center center !important;
   background-size: cover !important;
@@ -197,7 +198,8 @@ ion-buttons {
 .chat-container {
   display: flex;
   flex-direction: column;
-  height: 100%; 
+  flex: 1; /* Faz o container ocupar todo o espaço restante */
+  overflow: hidden; /* Impede rolagem extra no container */
 }
 
 /* Messages list */
@@ -205,8 +207,8 @@ ion-buttons {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex: 1; 
-  overflow-y: auto; 
+  flex: 1; /* Garante que a lista de mensagens cresça para ocupar espaço disponível */
+  overflow-y: auto; /* Adiciona rolagem interna somente para as mensagens */
   padding: 16px;
 }
 
@@ -219,6 +221,34 @@ ion-buttons {
   background-color: var(--cor-branco) !important;
   color: var(--cor-cinza-escuro) !important;
   align-self: flex-start;
+}
+
+/* Message input area */
+.message-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--cor-branco);
+  padding: 10px; /* Adicionado para evitar borda cortada */
+}
+
+/* Input field */
+.input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 20px;
+  margin-left: 1.5rem;
+  background-color: #e7e7e7;
+  margin-right: 8px;
+}
+
+/* Chat Input */
+.chat-input {
+  display: flex; /* Adicionado para ativar o Flexbox */
+  align-items: center;
+  background-color: var(--cor-branco);
+  border-top: 1px solid var(--cor-branco);
 }
 
 
@@ -236,25 +266,6 @@ ion-buttons {
   color: var(--cor-cinza-escuro) !important;
 }
 
-/* Message input area */
-.message-input-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  background-color: var(--cor-branco);
-  border-top: 1px solid var(--cor-branco);
-}
-
-/* Input field */
-.input {
-  flex-grow: 1;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 20px;
-  margin-left: 1.5rem;
-  background-color: #e7e7e7;
-  margin-right: 8px;
-}
 
 /* Send button (paper plane icon) */
 ion-fab-button {
@@ -263,14 +274,6 @@ ion-fab-button {
   width: 50px;
   height: 40px;
   --background: var(--cor-branco);
-}
-
-/* Chat Input*/
-.chat-input {
-  background-color: var(--cor-branco);
-  border-top: 1px solid var(--cor-branco);
-  justify-content: space-between;
-  align-items: center;
 }
 
 .center {

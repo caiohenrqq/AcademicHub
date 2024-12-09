@@ -29,7 +29,6 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       setLoading(false);
     });
 
-    // Obter o resultado do redirect
     getRedirectResult(auth)
       .then((result) => {
         if (result?.user) {
@@ -64,12 +63,12 @@ const loginWithGoogle = async () => {
   const provider = new GoogleAuthProvider();
   try {
     const result = await signInWithPopup(auth, provider); // Use signInWithPopup
-    setUser(result.user); // Atualiza o usuário no contexto
+    setUser(result.user); 
     console.log("Usuário logado com sucesso:", result.user);
   } catch (error) {
     if (error instanceof Error) {
       console.error("Erro no login com Google:", error.message);
-      alert("Falha no login: " + error.message); // Alerta ao usuário
+      alert("Falha no login: " + error.message); 
     } else {
       console.error("Erro desconhecido:", error);
       alert("Falha no login: erro desconhecido.");

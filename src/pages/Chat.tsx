@@ -39,7 +39,7 @@ const Chat: React.FC = () => {
   >([]);
   const [loading, setLoading] = useState(true);
 
-  const contentRef = useRef<HTMLIonContentElement>(null);
+  const contentRef = useRef<HTMLIonContentElement | null>(null);
 
   useEffect(() => {
     if (isPlatform("hybrid")) {
@@ -124,9 +124,12 @@ const Chat: React.FC = () => {
   }, [topicId]);
 
   useEffect(() => {
-    if (contentRef.current !== null) {
-      contentRef.current.scrollToBottom(0);
-    }
+    const scrollToBottom = async () => {
+      if (contentRef.current) {
+        await contentRef.current.scrollToBottom(600);
+      }
+    };
+    scrollToBottom();
   }, [messages]);
   
 
@@ -156,11 +159,11 @@ const Chat: React.FC = () => {
             <IonIcon icon={arrowBack} />
           </IonButton>
         </IonButtons>
-        <IonTitle>{loading ? "Carregado..." : topicName}</IonTitle>
+        <IonTitle>{loading ? "Carregando..." : topicName}</IonTitle>
       </IonHeader>
 
       {/* Chat Content */}
-      <IonContent overflow-scroll="false" className="chat-content" ref={contentRef}>
+      <IonContent className="chat-content" ref={contentRef} scrollEvents={true} scrollY={true}>
         <div className="chat-container">
           <div className="messages">
             {messages.map((msg) => (

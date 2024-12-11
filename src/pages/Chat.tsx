@@ -131,7 +131,6 @@ const Chat: React.FC = () => {
     };
     scrollToBottom();
   }, [messages]);
-  
 
   const handleSendMessage = async () => {
     const auth = getAuth();
@@ -154,16 +153,22 @@ const Chat: React.FC = () => {
     <div className="chat-view">
       {/* Chat Header */}
       <IonHeader>
+
         <IonButtons slot="start">
           <IonButton routerLink="/topicos">
             <IonIcon icon={arrowBack} />
           </IonButton>
+          <IonTitle className="title-chat">{loading ? "Carregando..." : topicName}</IonTitle>
         </IonButtons>
-        <IonTitle>{loading ? "Carregando..." : topicName}</IonTitle>
       </IonHeader>
 
       {/* Chat Content */}
-      <IonContent className="chat-content" ref={contentRef} scrollEvents={true} scrollY={true}>
+      <IonContent
+        className="chat-content"
+        ref={contentRef}
+        scrollEvents={true}
+        scrollY={true}
+      >
         <div className="chat-container">
           <div className="messages">
             {messages.map((msg) => (

@@ -178,7 +178,7 @@ const Topicos = () => {
           <section className="chats-section">
             {user ? (
               <IonText className="topic-name center">
-                <h2>Olá, {user.displayName}!</h2>
+                <h2 className="username">Olá, {user.displayName}!</h2>
               </IonText>
             ) : (
               <IonText>

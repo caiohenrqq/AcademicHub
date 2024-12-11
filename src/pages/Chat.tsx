@@ -153,7 +153,6 @@ const Chat: React.FC = () => {
     <div className="chat-view">
       {/* Chat Header */}
       <IonHeader>
-
         <IonButtons slot="start">
           <IonButton routerLink="/topicos">
             <IonIcon icon={arrowBack} />

@@ -16,7 +16,7 @@
 
 ## Setup
 
-**To access with your browser, mobile or desktop:**
+**To access with your browser, on your mobile or desktop:**
 [academichub-eight.vercel.app](https://academichub-eight.vercel.app)
 
 To run the project locally:

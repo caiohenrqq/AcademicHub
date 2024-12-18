@@ -16,8 +16,7 @@
 
 ## Preview
 
-![](ezgif.com-video-speed.mp4)
-![](http://i.imgur.com/OUkLi.gif)
+![](/ezgif-2-9778ac5870.gif)
 
 ## Setup
 

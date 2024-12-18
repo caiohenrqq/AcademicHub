@@ -4,9 +4,9 @@
 
 ## Preview
 
-<p align="center">
-  <img src="/ezgif-2-abf7c02719.gif" alt="Login, Topic Creation and Search" width="600">
-  <img src="/ezgif-2-9778ac5870.gif" alt="Chat" width="600">
+<p>
+  <img src="/ezgif-2-abf7c02719.gif" alt="Login, Topic Creation and Search" width="500">
+  <img src="/ezgif-2-9778ac5870.gif" alt="Chat" width="375">
 </p>
 
 ## Features

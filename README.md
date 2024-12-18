@@ -20,7 +20,7 @@
 - **Mobile Framework:** Ionic with Capacitor
 - **Database and Authentication**: Firebase and Google API
 - **Ensuring Secure of API keys**: Environment variable management with Vite
-- 
+
 ## Setup
 
 **To access with your browser, on your mobile or desktop:**

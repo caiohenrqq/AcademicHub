@@ -16,10 +16,8 @@
 
 ## Preview
 
-https://github.com/user-attachments/assets/cb298ee1-34bf-4e14-805b-ca3f6147464b 
-https://github.com/user-attachments/assets/d96ad859-4bc1-47f2-bfdf-4c1f3cd27812
-
-
+![](ezgif.com-video-speed.mp4)
+![](http://i.imgur.com/OUkLi.gif)
 
 ## Setup
 

@@ -1,5 +1,11 @@
 # AcademicHub
 
+## Preview
+
+![Login, Topic Creation and Search](/ezgif-2-abf7c02719.gif)
+
+![Chat](/ezgif-2-9778ac5870.gif)
+
 **AcademicHub** is a web application built using Ionic, React with TypeScript and Firebase, designed to facilitate academic collaboration. The app enables users to create topics and engage in real-time chat discussions, making it ideal for study groups and academic communities.
 
 ## Features
@@ -14,9 +20,7 @@
 - **Database and Authentication**: Firebase and Google API
 - **Ensuring Secure of API keys**: Environment variable management with Vite
 
-## Preview
 
-![](/ezgif-2-9778ac5870.gif)
 
 ## Setup
 

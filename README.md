@@ -14,6 +14,12 @@
 - **Database and Authentication**: Firebase and Google API
 - **Ensuring Secure of API keys**: Environment variable management with Vite
 
+## Preview
+
+https://github.com/user-attachments/assets/cb298ee1-34bf-4e14-805b-ca3f6147464b https://github.com/user-attachments/assets/d96ad859-4bc1-47f2-bfdf-4c1f3cd27812
+
+
+
 ## Setup
 
 **To access with your browser, on your mobile or desktop:**
